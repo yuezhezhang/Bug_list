@@ -42,9 +42,13 @@ sudo apt-get install ros-noetic-rviz
 * [sending a sequence of goals to move_base](https://answers.ros.org/question/210987/sending-a-sequence-of-goals-to-move_base/)
 * [how to send multiple goals with actionlib and c++](https://answers.ros.org/question/361326/how-to-send-multiple-goals-with-actionlib-and-c/)
 * [action lib detailed description](http://wiki.ros.org/actionlib/DetailedDescription) 
-* simpleaction server can not handle multiple goals.If i send 5 goals, it cancels the 2, 3, 4 goals.
+* simple action server can not handle multiple goals.If i send 5 goals, it cancels the 2, 3, 4 goals.
 
-9. Git submodule 
+9. Executing multiple tasks simultanuously
+* [discuss](https://github.com/ros-planning/moveit/pull/2810)
+* [draft](https://github.com/ros-planning/moveit/pull/2810)
+
+10. Git submodule 
 * [easy way to pull all submodules](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules)
 * [common code already exists in the index](https://stackoverflow.com/questions/12898278/issue-with-adding-common-code-as-git-submodule-already-exists-in-the-index)
 * [some steps](https://www.jianshu.com/p/9000cd49822c)
