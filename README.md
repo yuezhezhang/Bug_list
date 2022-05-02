@@ -55,3 +55,8 @@ sudo apt-get install ros-noetic-rviz
 * [git submodule push](https://stackoverflow.com/questions/5814319/git-submodule-push/10878273#10878273)
 * [push submodule to remote](https://stackoverflow.com/questions/8372625/git-how-to-push-submodule-to-a-remote-repository)
 * [how to push third party code to my repository](https://segmentfault.com/a/1190000009928515) **-- remaining issue**
+
+11. Rospack cannot find installed package
+* [reason](https://blog.csdn.net/scx837685002/article/details/78249961)
+* [solution](https://stackoverflow.com/questions/27053334/ros-package-not-found-after-catkin-make)
+
