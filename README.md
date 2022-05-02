@@ -31,15 +31,23 @@ sudo apt-get install ros-noetic-robot-state-publisher
 sudo apt-get install ros-noetic-rviz
 ```
 
-7. Can not use python multiprocessing in ROS **--remaining issue**
+7. Can not use python multiprocessing in ROS **-- remaining issue**
 * [stackoverflow link](https://stackoverflow.com/questions/70968015/cant-use-pool-map-for-a-class-method-in-ros-python)
 * [pickle](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
 * [ParallelProcessing](https://wiki.python.org/moin/ParallelProcessing)
 
-8. Git submodule 
+8. Action server with multiple goals **-- remaining issue**
+* [action server with more than one action](https://answers.ros.org/question/9776/action-server-with-more-than-one-action/)
+* [how to handle multiple goals with Action API (without waitForResult )](https://answers.ros.org/question/292507/how-to-handle-multiple-goals-with-action-api-without-waitforresult/)
+* [sending a sequence of goals to move_base](https://answers.ros.org/question/210987/sending-a-sequence-of-goals-to-move_base/)
+* [how to send multiple goals with actionlib and c++](https://answers.ros.org/question/361326/how-to-send-multiple-goals-with-actionlib-and-c/)
+* [action lib detailed description](http://wiki.ros.org/actionlib/DetailedDescription) 
+* simpleaction server can not handle multiple goals.If i send 5 goals, it cancels the 2, 3, 4 goals.
+
+9. Git submodule 
 * [easy way to pull all submodules](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules)
 * [common code already exists in the index](https://stackoverflow.com/questions/12898278/issue-with-adding-common-code-as-git-submodule-already-exists-in-the-index)
 * [some steps](https://www.jianshu.com/p/9000cd49822c)
 * [git submodule push](https://stackoverflow.com/questions/5814319/git-submodule-push/10878273#10878273)
 * [push submodule to remote](https://stackoverflow.com/questions/8372625/git-how-to-push-submodule-to-a-remote-repository)
-* [how to push third party code to my repository](https://segmentfault.com/a/1190000009928515) **--remaining issue**
+* [how to push third party code to my repository](https://segmentfault.com/a/1190000009928515) **-- remaining issue**
