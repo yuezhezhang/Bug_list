@@ -42,7 +42,7 @@ sudo apt-get install ros-noetic-rviz
 * [sending a sequence of goals to move_base](https://answers.ros.org/question/210987/sending-a-sequence-of-goals-to-move_base/)
 * [how to send multiple goals with actionlib and c++](https://answers.ros.org/question/361326/how-to-send-multiple-goals-with-actionlib-and-c/)
 * [action lib detailed description](http://wiki.ros.org/actionlib/DetailedDescription) 
-* simple action server can not handle multiple goals.If i send 5 goals, it cancels the 2, 3, 4 goals.
+* simple action server can not handle multiple goals.If I send 5 goals, it cancels the 2, 3, 4 goals.
 
 9. Executing multiple tasks simultanuously
 * [discuss](https://github.com/ros-planning/moveit/pull/2810)
@@ -57,6 +57,9 @@ sudo apt-get install ros-noetic-rviz
 * [how to push third party code to my repository](https://segmentfault.com/a/1190000009928515) **-- remaining issue**
 
 11. Rospack cannot find installed package
-* [reason](https://blog.csdn.net/scx837685002/article/details/78249961)
+* [the reason could be](https://blog.csdn.net/scx837685002/article/details/78249961)
 * [solution](https://stackoverflow.com/questions/27053334/ros-package-not-found-after-catkin-make)
+
+12. [To fold file in VSCode (e.g. xml file)](https://blog.csdn.net/wuyujin1997/article/details/108424032)
+* Ctrl + K + 0 
 
