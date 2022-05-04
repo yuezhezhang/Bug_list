@@ -36,6 +36,9 @@ sudo apt-get install ros-noetic-rviz
 * [the reason could be](https://blog.csdn.net/scx837685002/article/details/78249961)
 * [solution](https://stackoverflow.com/questions/27053334/ros-package-not-found-after-catkin-make)
 
+## Singularity
+1. [To create the singularity image](https://github.com/yuezhezhang/discrete_active_inference/tree/main/singularity_environment)
+
 ## Git collaboration
 1. Git submodule 
 * [easy way to pull all submodules](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules)
