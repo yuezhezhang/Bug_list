@@ -1,6 +1,19 @@
 # Ros bug list
 
-## Installation and Linux commands
+## Linux commands
+1. Open tty4
+* `Ctrl + Alt + F4`
+
+2. View the log of dpkg installation
+* `vim /var/log/dpkg.log`
+
+3. Take a screenshot
+* `Shift + prtsc`
+
+4. [To fold file in VSCode (e.g. xml file)](https://blog.csdn.net/wuyujin1997/article/details/108424032)
+* `Ctrl + K + 0` 
+
+## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
 sudo apt-get install ros-noetic-rosbash
@@ -36,6 +49,15 @@ sudo apt-get install ros-noetic-rviz
 * [the reason could be](https://blog.csdn.net/scx837685002/article/details/78249961)
 * [solution](https://stackoverflow.com/questions/27053334/ros-package-not-found-after-catkin-make)
 
+8. [Black sgreen due to sogopinyin](https://blog.csdn.net/Mr_Cat123/article/details/78573780)
+```
+Ctrl + Alt + F4
+sudo apt-get purge sogoupinyin
+sudo apt-get purge fcitx
+sudo apt-get autoremove
+reboot 
+```
+
 ## Singularity
 1. [To create the singularity image](https://github.com/yuezhezhang/discrete_active_inference/tree/main/singularity_environment)
 
@@ -66,8 +88,3 @@ sudo apt-get install ros-noetic-rviz
 3. Executing multiple tasks simultanuously
 * [discuss](https://github.com/ros-planning/moveit/pull/2810)
 * [draft](https://github.com/ros-planning/moveit/pull/2810)
-
-## Others
-1. [To fold file in VSCode (e.g. xml file)](https://blog.csdn.net/wuyujin1997/article/details/108424032)
-* Ctrl + K + 0 
-
