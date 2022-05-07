@@ -13,6 +13,9 @@
 4. [To fold file in VSCode (e.g. xml file)](https://blog.csdn.net/wuyujin1997/article/details/108424032)
 * `Ctrl + K + 0` 
 
+5. Open another terminal 
+* `Ctrl + shift + K`
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
