@@ -16,6 +16,9 @@
 5. Open another terminal 
 * `Ctrl + shift + K`
 
+6. To change the background colour in VSCode
+* `Ctrl + K + T`
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
