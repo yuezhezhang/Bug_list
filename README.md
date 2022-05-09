@@ -66,6 +66,10 @@ reboot
 
 ## Singularity
 1. [To create the singularity image](https://github.com/yuezhezhang/discrete_active_inference/tree/main/singularity_environment)
+2. [Add dependencies to the singularity](https://people.tuebingen.mpg.de/felixwidmaier/rrc2021/singularity.html#add-custom-dependencies-to-the-container)
+
+
+
 
 ## Git collaboration
 1. Git submodule 
@@ -76,6 +80,11 @@ reboot
 * [push submodule to remote](https://stackoverflow.com/questions/8372625/git-how-to-push-submodule-to-a-remote-repository)
 * [how to push third party code to my repository](https://segmentfault.com/a/1190000009928515) **-- remaining issue**
 
+## Tutorials
+1. [ROS tutorials](http://wiki.ros.org/ROS/Tutorials)
+2. [URDF](http://wiki.ros.org/urdf) is a package containing a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model. 
+3. [rqt](http://wiki.ros.org/rqt) is a software framework of ROS that implements the various GUI tools in the form of plugins.
+4. [Navigation sending simple goals](http://library.isr.ist.utl.pt/docs/roswiki/navigation%282f%29Tutorials%282f%29SendingSimpleGoals.html)
 
 ## Coding
 1. Can not use python multiprocessing in ROS **-- remaining issue**
