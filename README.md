@@ -103,3 +103,21 @@ reboot
 3. Executing multiple tasks simultanuously
 * [discuss](https://github.com/ros-planning/moveit/pull/2810)
 * [draft](https://github.com/ros-planning/moveit/pull/2810)
+
+## Issac Gym
+1. Find isaac gym here https://developer.nvidia.com/isaac-gym. Register and download the simulator.  Within the download, there is a folder called 'docs'. Follow the instructions
+
+2. Install in a new conda environment (In the root directory)
+```
+./create_conda_env_rlgpu.sh
+```
+3. Activate by running
+```
+conda activate rlgpu
+```
+4. Deactivate by running
+```
+conda deactivate
+```
+5. Install Example RL Environments
+Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup instructions in the README.
