@@ -121,3 +121,11 @@ conda deactivate
 ```
 5. Install Example RL Environments
 Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup instructions in the README.
+
+6. Trouble shooting
+* Error `ImportError: libpython3.7m.so.1.0: cannot open shared object file: No such file or directory`
+* Set the LD_LIBRARY_PATH variable in rlgpu environment 
+   ```
+   export LD_LIBRARY_PATH=/home/zyz/anaconda3/envs/rlgpu/lib
+   ```
+* Then run the simple example would be fine
