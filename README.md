@@ -128,4 +128,5 @@ Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup inst
    ```
    export LD_LIBRARY_PATH=/home/zyz/anaconda3/envs/rlgpu/lib
    ```
-* Then run the simple example would be fine
+* Then run the simple example would be fine.
+* We can `echo $PATH` in different conda environment
