@@ -104,6 +104,9 @@ reboot
 * [discuss](https://github.com/ros-planning/moveit/pull/2810)
 * [draft](https://github.com/ros-planning/moveit/pull/2810)
 
+4. [ROSPlan change planner](https://github.com/KCL-Planning/ROSPlan/issues/13)
+5. [ROSPlan planner interface](https://kcl-planning.github.io/ROSPlan//documentation/interfaces/02_planner_interface.html)
+
 ## Issac Gym
 1. Find isaac gym here https://developer.nvidia.com/isaac-gym. Register and download the simulator.  Within the download, there is a folder called 'docs'. Follow the instructions
 
