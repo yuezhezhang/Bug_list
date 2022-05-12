@@ -127,7 +127,7 @@ Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup inst
 
 6. Trouble shooting
 * Error `ImportError: libpython3.7m.so.1.0: cannot open shared object file: No such file or directory`
-* Set the LD_LIBRARY_PATH variable in rlgpu environment 
+* Set the LD_LIBRARY_PATH variable in rlgpu environment (should be updated every time) 
    ```
    export LD_LIBRARY_PATH=/home/zyz/anaconda3/envs/rlgpu/lib
    ```
