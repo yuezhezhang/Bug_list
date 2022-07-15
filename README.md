@@ -19,6 +19,12 @@
 6. To change the background colour in VSCode
 * `Ctrl + K + T`
 
+7. [Find the Process ID of a program and kill it](https://itsfoss.com/how-to-find-the-process-id-of-a-program-and-kill-it-quick-tip/)
+```
+ps aux | grep -i “name of program”
+sudo kill -9 process_id
+```
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
