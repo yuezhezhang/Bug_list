@@ -74,7 +74,17 @@ reboot
 1. [To create the singularity image](https://github.com/yuezhezhang/discrete_active_inference/tree/main/singularity_environment)
 2. [Add dependencies to the singularity](https://people.tuebingen.mpg.de/felixwidmaier/rrc2021/singularity.html#add-custom-dependencies-to-the-container)
 
-
+## Latex
+1. [Cite range of papers](https://tex.stackexchange.com/questions/3871/citing-a-range-of-papers-using-numeric-keys-as-in-citea-b-c-1-3)
+```
+\documentclass{article}
+\usepackage[style=numeric-comp]{biblatex}
+\bibliography{xampl}
+\begin{document}
+hello \cite{article-full,book-full,mastersthesis-full}
+\printbibliography
+\end{document}
+```
 
 
 ## Git collaboration
