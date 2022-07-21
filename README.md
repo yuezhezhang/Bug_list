@@ -85,6 +85,7 @@ hello \cite{article-full,book-full,mastersthesis-full}
 \printbibliography
 \end{document}
 ```
+2. [Mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
 
 
 ## Git collaboration
