@@ -87,6 +87,8 @@ hello \cite{article-full,book-full,mastersthesis-full}
 ```
 2. [Mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
 
+3. [Adjust width of algorithm](https://tex.stackexchange.com/questions/350434/adjust-width-of-algorithm-float)
+
 
 ## Git collaboration
 1. Git submodule 
