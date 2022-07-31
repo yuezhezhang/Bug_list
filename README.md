@@ -90,7 +90,7 @@ hello \cite{article-full,book-full,mastersthesis-full}
 3. [Adjust width of algorithm](https://tex.stackexchange.com/questions/350434/adjust-width-of-algorithm-float)
 
 4. [Add section without number to the table of content](https://tex.stackexchange.com/questions/30122/generate-table-of-contents-when-section-sections-without-numbering-has-been)
-* If we want to keep the traditional numbered space
+* If we donot want to keep the traditional numbered space
    ```
    \chapter{Glossary}
 
@@ -100,7 +100,8 @@ hello \cite{article-full,book-full,mastersthesis-full}
    \section*{List of Symbols}
    \addcontentsline{toc}{section}{List of Symbols}%
    ```
-* If we donot want to keep the traditional numbered space
+   ![fig](https://github.com/yuezhezhang/ROS_bug_list/blob/main/images/latex-4-1.png)
+* If we want to keep the traditional numbered space
    ```
    \chapter{Glossary}
 
@@ -110,6 +111,7 @@ hello \cite{article-full,book-full,mastersthesis-full}
    \section*{List of Symbols}
    \addcontentsline{toc}{section}{\protect\numberline{}List of Symbols}%
    ```
+   ![fig](https://github.com/yuezhezhang/ROS_bug_list/blob/main/images/latex-4-2.png)
 
 ## Git collaboration
 1. Git submodule 
