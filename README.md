@@ -175,3 +175,17 @@ Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup inst
    ```
 * Then run the simple example would be fine.
 * We can `echo $PATH` in different conda environment
+
+## Python
+1. [Import module from another folder](https://stackoverflow.com/questions/58084072/python-module-not-found-but-exists-in-folder/58084390#58084390)
+* If I have a folder like
+   ```
+      .
+   └── my_project
+       ├── first_folder
+       ├── second_folder
+       └── third_folder
+   ```
+ * We can do one of the followings:
+ * `cd ~/my_project && export PYTHONPATH=$(pwd)`
+ * `cd ~/my_project && export PATH=$PATH:$(pwd)`
