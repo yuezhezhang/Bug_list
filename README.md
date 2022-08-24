@@ -24,6 +24,10 @@
 ps aux | grep -i “name of program”
 sudo kill -9 process_id
 ```
+8. [Rosclean](http://wiki.ros.org/rosclean)
+* rosclean will cleanup filesystem resources, such as log files
+* `rosclean check`
+* `rosclean purge`
 
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
