@@ -32,6 +32,10 @@ sudo kill -9 process_id
 8. [Screenshot with dimensions](https://askubuntu.com/questions/262253/how-do-i-take-a-screenshot-with-dimensions)
 * Use "shutter"
 
+9. Video recording
+* Use [OBS](https://obsproject.com/)
+* Use [Kazam](https://itsfoss.com/kazam-screen-recorder/)
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
