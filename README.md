@@ -36,6 +36,11 @@ sudo kill -9 process_id
 * Use [OBS](https://obsproject.com/)
 * Use [Kazam](https://itsfoss.com/kazam-screen-recorder/)
 
+10. [Top command weird characters](https://stackoverflow.com/questions/30999873/output-of-top-command-contains-weird-characters)
+```
+top -cb | grep "dus_static" > cpu_info.txt
+```
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
