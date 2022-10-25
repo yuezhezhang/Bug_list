@@ -128,7 +128,36 @@ hello \cite{article-full,book-full,mastersthesis-full}
    \addcontentsline{toc}{section}{\protect\numberline{}List of Symbols}%
    ```
    ![fig](https://github.com/yuezhezhang/ROS_bug_list/blob/main/images/latex-4-2.png)
+   
+5. [Draw three-line table](https://zhuanlan.zhihu.com/p/440498868)
+```
+\begin{tabular}{cccccc}
+   \toprule
+   序号 & 姓名 & 性别 & 年龄 & 身高/cm & 体重/kg \\
+   \midrule
+   1 & 张三 & M & 16 & 163 & 50 \\
+   2 & 王红 & F & 15 & 159 & 47 \\
+   3 & 李二 & M & 17 & 165 & 52 \\
+   \bottomrule
+\end{tabular}
+```
+6. [Add an underbrace to a row vecor](https://tex.stackexchange.com/questions/519336/how-to-add-an-underbrace-to-the-part-of-the-row-vector)
+```
+\documentclass{article}
+\usepackage{amsmath}
 
+\begin{document}
+
+\[
+A = \begin{bmatrix}
+    1&\smash{\underbrace{\begin{matrix}
+        1&\dotsb&1
+    \end{matrix}}_N}
+\end{bmatrix}
+\]
+
+\end{document}
+```
 ## Git collaboration
 1. Git submodule 
 * [easy way to pull all submodules](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules)
