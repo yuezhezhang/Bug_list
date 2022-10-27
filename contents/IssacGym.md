@@ -24,3 +24,6 @@ Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup inst
    ```
 * Then run the simple example would be fine.
 * We can `echo $PATH` in different conda environment
+
+## Gym_envs_urdf
+1. Rotate the view of camera: alt + mouse
