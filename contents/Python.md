@@ -33,6 +33,7 @@
  ``` 
  5. run `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch`
  6. [conda commands cheat sheet](https://hcc.unl.edu/docs/attachments/11635089.pdf)
+ 7. [Guide to python command line argumens](https://levelup.gitconnected.com/the-easy-guide-to-python-command-line-arguments-96b4607baea1), [argparse tutorial](https://docs.python.org/3/library/argparse.html#creating-a-parser)
  
 ### Importing python file as module
 
