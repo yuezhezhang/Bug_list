@@ -117,3 +117,22 @@
 * [Overall guidance](https://csatlas.com/python-import-file-module/#import_a_file_in_the_same_directory)
 * [Suggestion to adding to python path](https://stackoverflow.com/questions/4383571/importing-files-from-different-folder?page=1&tab=scoredesc#tab-top)
 * [Suggestion to installing packages](https://stackoverflow.com/questions/43476403/importerror-no-module-named-something)
+
+### If-else
+* Bug
+  ```
+  a = 1
+  if a == 0 or 2:
+     print('hhh') # will always print this
+  else:
+     print('heyyy')
+  ```
+* Correct
+  ```
+  a = 1
+  if a == 0 or a == 2:
+     print('hhh')
+  else:
+     print('heyyy') # here
+  ```
+  
