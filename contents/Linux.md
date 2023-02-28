@@ -84,6 +84,21 @@ sudo apt-get autoremove
 reboot 
 ```
 
+## Update
+1. update
+```
+sudo apt update 
+```
+2. check upgradable list
+```
+apt list --upgradable | grep google
+```
+3. [update google](https://itsfoss.com/update-google-chrome-ubuntu/) 
+```
+sudo apt --only-upgrade install google-chrome-stable
+```
+
+
 ## Singularity
 1. [To create the singularity image](https://github.com/yuezhezhang/discrete_active_inference/tree/main/singularity_environment)
 2. [Add dependencies to the singularity](https://people.tuebingen.mpg.de/felixwidmaier/rrc2021/singularity.html#add-custom-dependencies-to-the-container)
