@@ -67,3 +67,20 @@ A = \begin{bmatrix}
 \end{document}
 ```
 7. [Mathematical fonts](https://www.overleaf.com/learn/latex/Mathematical_fonts)
+
+8. [Curly brace in equations](https://stackoverflow.com/questions/4027363/two-statements-next-to-curly-brace-in-an-equation)
+```
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{equation}
+  f(x)=\begin{cases}
+    1, & \text{if $x<0$}.\\
+    0, & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+\end{document}
+```
