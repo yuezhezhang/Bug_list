@@ -136,15 +136,21 @@
      print('heyyy') # here
   ```
   
-  ### Matplotlib
-  * [PLot a circle](https://stackoverflow.com/questions/9215658/plot-a-circle-with-pyplot)
-  * [Issue of plotting circle as oval](https://stackoverflow.com/questions/9230389/why-is-matplotlib-plotting-my-circles-as-ovals)
-  * [List of colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
-  * 
+### Matplotlib
+* [PLot a circle](https://stackoverflow.com/questions/9215658/plot-a-circle-with-pyplot)
+* [Issue of plotting circle as oval](https://stackoverflow.com/questions/9230389/why-is-matplotlib-plotting-my-circles-as-ovals)
+* [List of colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
+* 
 
-  ## Pytorch
-  * [torch.index_select](https://pytorch.org/docs/stable/generated/torch.index_select.html)
-  * [torch.squeeze](https://pytorch.org/docs/stable/generated/torch.squeeze.html)
-  * [torch.diagonal](https://pytorch.org/docs/stable/generated/torch.diagonal.html)
-  * [torch.fliplr](https://pytorch.org/docs/stable/generated/torch.fliplr.html)
-  * [torch.topk](https://pytorch.org/docs/stable/generated/torch.topk.html)
+## Pytorch
+* [torch.index_select](https://pytorch.org/docs/stable/generated/torch.index_select.html)
+* [torch.squeeze](https://pytorch.org/docs/stable/generated/torch.squeeze.html)
+* [torch.diagonal](https://pytorch.org/docs/stable/generated/torch.diagonal.html)
+* [torch.fliplr](https://pytorch.org/docs/stable/generated/torch.fliplr.html)
+* [torch.topk](https://pytorch.org/docs/stable/generated/torch.topk.html)
+
+
+### Python-Ros
+* [Install rospkg](https://answers.ros.org/question/356188/importerror-no-module-named-rospkg/)
+   * `File "/opt/ros/noetic/lib/python3/dist-packages/roslib/launcher.py", line 42, in <module> import rospkg ModuleNotFoundError: No module named 'rospkg'`
+   * Run `sudo pip install --target=/opt/ros/noetic/lib/python3/dist-packages rospkg`
