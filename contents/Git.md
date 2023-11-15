@@ -9,3 +9,24 @@
 2. [GnuTLS recv error (-110)](https://stackoverflow.com/questions/52529639/gnutls-recv-error-110-the-tls-connection-was-non-properly-terminated)
   * Recompile and install git
   * remove libcurl4-gnutls-dev, install libcurl4-openssl-dev
+3. Clone someone else's repo and push to your own repo
+  * See [here](https://stackoverflow.com/questions/18200248/cloning-a-repo-from-someone-elses-github-and-pushing-it-to-a-repo-on-my-github)
+  * Create a new repository at github.com. (this is your repository)
+    - Give it the same name as the other repository.
+    - Don't initialize it with a README, .gitignore, or license
+  * Clone the other repository to your local machine.
+     ```
+     git clone https://github.com/other-account/other-repository.git
+     ```
+  * Rename the local repository's current 'origin' to 'upstream'.
+    ```
+    git remote rename origin upstream
+    ```
+  * Give the local repository an 'origin' that points to your repository.
+    ```
+    git remote add origin https://github.com/your-account/your-repository.git
+    ```
+  * Push the local repository to your repository on github.
+    ```
+    git push origin main
+    ```
