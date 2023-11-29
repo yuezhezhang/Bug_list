@@ -30,3 +30,8 @@
     ```
     git push origin main
     ```
+ 4. [**Guide for managing a ros project with Git**](https://robotics.stackexchange.com/questions/81431/guide-for-managing-a-ros-project-with-git)
+  * git strategy for catkin and package folders (#q257855)
+  * Best practice: one git repo per package? (#q218498)
+  * What should I upload exactly to GitHub (#q173960)
+  * Using git for version control with catkin and Eclipse (#q216664)
