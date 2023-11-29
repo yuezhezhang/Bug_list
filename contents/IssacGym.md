@@ -27,3 +27,7 @@ Visit https://github.com/NVIDIA-Omniverse/IsaacGymEnvs and follow the setup inst
 
 ## Gym_envs_urdf
 1. Rotate the view of camera: alt + mouse
+
+## Libfranka
+1. [doc](https://frankaemika.github.io/docs/libfranka.html)
+2. Figure out when to use ros topic or libfranka
