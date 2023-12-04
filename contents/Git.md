@@ -42,3 +42,16 @@
     git checkout master
     git merge better_branch             # fast-forward master up to the merge
     ```
+ 6. [Compare between branches](https://www.git-tower.com/learn/git/faq/git-compare-two-branches)
+  * Compare actual changes
+    ```
+    git diff main..another_branch
+    ```
+  * Compare commits
+    ```
+    git log main..another_branch
+    ```
+  * Compare a specific file
+    ```
+    git diff main..another_branch file
+    ```
