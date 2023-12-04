@@ -35,3 +35,10 @@
   * Best practice: one git repo per package? (#q218498)
   * What should I upload exactly to GitHub (#q173960)
   * Using git for version control with catkin and Eclipse (#q216664)
+ 5. [Make the current branch a master branch](https://stackoverflow.com/questions/2763006/make-the-current-git-branch-a-master-branch), [tutorial](https://www.w3docs.com/snippets/git/how-to-make-the-current-git-branch-a-master-branch.html)
+    ```
+    git checkout better_branch
+    git merge --strategy=ours master    # keep the content of this branch, but record a merge
+    git checkout master
+    git merge better_branch             # fast-forward master up to the merge
+    ```
