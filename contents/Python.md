@@ -154,3 +154,11 @@
 * [Install rospkg](https://answers.ros.org/question/356188/importerror-no-module-named-rospkg/)
    * `File "/opt/ros/noetic/lib/python3/dist-packages/roslib/launcher.py", line 42, in <module> import rospkg ModuleNotFoundError: No module named 'rospkg'`
    * Run `sudo pip install --target=/opt/ros/noetic/lib/python3/dist-packages rospkg`
+
+### Regular Expression
+* See [docs](https://docs.python.org/zh-cn/3/library/re.html#regular-expression-objects) and [this](https://www.runoob.com/python/python-reg-expressions.html)
+* To check a character within range：
+  ```
+  if re.search(r'[0-9A-Fa-f]', x):
+     pass
+  ``` 
