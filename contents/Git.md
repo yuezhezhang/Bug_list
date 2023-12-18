@@ -55,3 +55,15 @@
     ```
     git diff main..another_branch file
     ```
+ 7. Failed to connect to github.com port 443: Operation timed out
+  * In Linux, see [here](https://www.jianshu.com/p/471aeba64724). In Windows, see [here](https://developer.aliyun.com/article/1077240)
+  * Search the IP address of github.com and github.global.ssl.fastly.net in [https://sites.ipaddress.com/](https://sites.ipaddress.com/)
+  * Copy paste in the hosts files
+    ```
+    sudo vi /etc/hosts
+
+    --------------------
+    140.82.112.3    github.com
+    151.101.1.194   github.global.ssl.fastly.net
+    --------------------
+    ```
