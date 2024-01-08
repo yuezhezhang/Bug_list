@@ -24,3 +24,14 @@
 | Create env from a text file | `conda env create --file robot.txt` |
 | Delete an env and everything | `conda env remove --name robot`        |
 | Remove one or more packages from a env| `conda remove --name robot toolz boltons` |
+
+## Pip Common Commands
+| Meaning | Command |
+| :--     | :--     |
+| Install package from PyPI | `pip install PACKAGENAME`|
+| Install package with specific version| `pip install PACKAGENAME==2.22.0` |
+| Install package within range| `pip install PACKAGENAME>=2.22.0, <3` |
+| Show details of installed package| `pip show PACKAGENAME` |
+| List installed packages | `pip list` or `pip freeze`|
+| Sava packages in a text file| `pip freeze > requirements.txt`|
+| Install packages from a text file| `pip install -r requirements.txt` |
