@@ -41,3 +41,9 @@
 * `apt-get install` for system-wide package install
 * `conda install` for current env install
 * Not everything available in `apt-get install` is available in `conda install`
+
+## Q&A
+### 1. [Using pip to install packages to conda environment](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment)
+* `conda activate env_name`
+* `conda install pip`
+* `pip install package_name`
