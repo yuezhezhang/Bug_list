@@ -39,6 +39,10 @@ sudo kill -9 process_id
 top -cb | grep "dus_static" > cpu_info.txt
 ```
 
+11. [Show file size](https://kodekloud.com/blog/check-file-size-in-linux/#2-find-file-size-in-linux-using-the-ls-command)
+* `ls -lh FILENAME` show the size of the file
+* `ls -lhR` show all the files in the directory  
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
