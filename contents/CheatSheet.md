@@ -46,4 +46,5 @@
 ### 1. [Using pip to install packages to conda environment](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment)
 * `conda activate env_name`
 * `conda install pip`
-* `pip install package_name`
+* `which -a pip`
+* `pip install package_name` or `/anaconda/envs/venv_name/bin/pip install package_name`
