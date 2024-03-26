@@ -41,6 +41,9 @@
 * `apt-get install` for system-wide package install
 * `conda install` for current env install
 * Not everything available in `apt-get install` is available in `conda install`
+* `apt list --installed` lists all the packages installed using apt
+* `dpkg -L package_name` checks the path for the installed package
+* `dpkg -l package_name` checks the version for the installed package
 
 ## Q&A
 ### 1. [Using pip to install packages to conda environment](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment)
