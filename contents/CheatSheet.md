@@ -47,6 +47,8 @@
 
 ## Q&A
 ### 1. [Using pip to install packages to conda environment](https://stackoverflow.com/questions/41060382/using-pip-to-install-packages-to-anaconda-environment)
+* `conda create --name env_name`
+  * Double check the dependency of python when creating the env from `environment.yml`, pip may inherit packages from other env
 * `conda activate env_name`
 * `conda install pip`
 * `which -a pip`
