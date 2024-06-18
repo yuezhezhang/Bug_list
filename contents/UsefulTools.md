@@ -10,3 +10,6 @@
    * neovim, [website](https://neovim.io/), [github](https://github.com/neovim/neovim)
 7. Zotero
    * [Identifying Collections an Item is](https://www.zotero.org/support/collections_and_tags): Select the item, press the key Alt 
+8. [Freeconvert](https://www.freeconvert.com/)
+   * [mov to mp4](https://www.freeconvert.com/mov-to-mp4/)
+   * [video compress](https://www.freeconvert.com/video-compressor/)
