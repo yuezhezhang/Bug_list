@@ -6,6 +6,7 @@
 
 | Meaning | Command |
 | :--     | :--     |
+| Disable default activate | `conda config --set auto_activate_base false`|
 | Create env named robot | `conda create --name robot`|
 | Activate the env | `conda activate robot` |
 | Deactivate the current env | `conda deactivate`         |
