@@ -7,7 +7,7 @@
 | Meaning | Command |
 | :--     | :--     |
 | Disable default activate | `conda config --set auto_activate_base false`|
-| Create env named robot | `conda create --name robot`|
+| Create env named robot | `conda create --name robot` or `-n`|
 | Activate the env | `conda activate robot` |
 | Deactivate the current env | `conda deactivate`         |
 | Verify conda installed  | `conda info` |
@@ -20,9 +20,9 @@
 | Show python version | `python --version` |
 | Check which pip | `which pip` |
 | List installed packages in current env  | `conda list` |
-| Save env to a text file|  `conda list --explicit > robot.txt`  |
+| Save env to a text file|  `conda list --explicit > robot.txt` or `conda env export > environment.yml` |
 | List all the envs   | `conda env list`   |
-| Create env from a text file | `conda env create --file robot.txt` |
+| Create env from a text file | `conda env create --file robot.txt` or `-f`|
 | Delete an env and everything | `conda env remove --name robot`        |
 | Remove one or more packages from a env| `conda remove --name robot toolz boltons` |
 
@@ -54,3 +54,9 @@
 * `conda install pip`
 * `which -a pip`
 * `pip install package_name` or `/anaconda/envs/venv_name/bin/pip install package_name`
+
+### 2. [Build the package](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
+* [short tutorial](https://medium.com/@codebyteexplorer/build-your-first-python-package-with-pyproject-toml-19e2119edbca)
+* Create `pyproject.toml`
+* Put `__init__.py` to mark the directory as a package
+* `python install -e.`
