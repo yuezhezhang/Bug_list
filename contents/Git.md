@@ -67,3 +67,4 @@
     151.101.1.194   github.global.ssl.fastly.net
     --------------------
     ```
+  8. [How to add license](https://gist.github.com/nicolasdao/a7adda51f2f185e8d2700e1573d8a633) 
