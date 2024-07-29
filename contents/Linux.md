@@ -109,3 +109,21 @@ sudo apt --only-upgrade install google-chrome-stable
 
 ## Ubuntu
 1. [Is it safe to disable Secure Boot](https://askubuntu.com/questions/843656/is-it-safe-to-disable-secure-boot)
+
+## Bash
+1. [open another terminal in bash](https://askubuntu.com/questions/46627/how-can-i-make-a-script-that-opens-terminal-windows-and-executes-commands-in-the)
+   ```
+   gnome-terminal -e
+   ```
+2. [calling conda activate from bash](https://stackoverflow.com/questions/34534513/calling-conda-source-activate-from-bash-script)
+   ```
+   eval "$(conda shell.bash hook)"
+   conda activate <env-name>
+   ```
+3. [run command after certain time](https://unix.stackexchange.com/questions/286070/run-command-after-a-certain-length-of-time-has-elapsed)
+   ```
+   long-command & sleep 10; short-command
+   ```
+4. [parse command line argument in bash](https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash)
+5. [if-else-statement](https://linuxize.com/post/bash-if-else-statement/)
+6. [bash function with boolean](https://stackoverflow.com/questions/66357212/how-to-call-bash-function-with-boolean-parameter)
