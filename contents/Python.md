@@ -161,4 +161,15 @@
   ```
   if re.search(r'[0-9A-Fa-f]', x):
      pass
-  ``` 
+  ```
+
+### Poetry
+* install pipx, [see](https://pipx.pypa.io/stable/installation/)
+  ```
+  python3 -m pip install --user pipx
+  python3 -m pipx ensurepath
+  ```
+* install poetry using pipx, [see](https://python-poetry.org/docs/main/)
+  ```
+  python3 -m pipx install poetry
+  ```
