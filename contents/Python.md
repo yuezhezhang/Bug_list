@@ -173,3 +173,9 @@
   ```
   python3 -m pipx install poetry
   ```
+
+### Dataclass
+* [see](https://realpython.com/python-data-classes/)
+
+### Hydra
+* to manage config, [see](https://hydra.cc/docs/intro/)
