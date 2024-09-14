@@ -67,4 +67,6 @@
     151.101.1.194   github.global.ssl.fastly.net
     --------------------
     ```
-  8. [How to add license](https://gist.github.com/nicolasdao/a7adda51f2f185e8d2700e1573d8a633) 
+  8. [How to add license](https://gist.github.com/nicolasdao/a7adda51f2f185e8d2700e1573d8a633)
+  9. [Impossible to center a table in GitHub readme](https://stackoverflow.com/questions/44172954/is-it-possible-to-have-a-table-in-the-center-in-a-github-gist-markdown)
+  10. [GitHub markdown notes](https://gist.github.com/nikhilnayyar002/7a35e653d3d590e317c829243e73b110)
