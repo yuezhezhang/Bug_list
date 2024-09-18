@@ -17,3 +17,7 @@
 ### 8. [Useful tools](https://github.com/yuezhezhang/Bug_list/blob/main/contents/UsefulTools.md)
 
 ### 9. [Cheat sheet](https://github.com/yuezhezhang/Bug_list/blob/main/contents/CheatSheet.md)
+
+### 10. [Robotic](https://github.com/yuezhezhang/Bug_list/blob/main/contents/Robotic.md)
+
+### 11. [Nvidia](https://github.com/yuezhezhang/Bug_list/blob/main/contents/Nvidia.md)
