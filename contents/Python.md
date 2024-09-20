@@ -179,3 +179,9 @@
 
 ### Hydra
 * to manage config, [see](https://hydra.cc/docs/intro/)
+
+### Package path
+* [removing python from third party](https://askubuntu.com/questions/1326227/removing-python3-9-installed-from-third-part)
+* [Difference between usr/lib and usr/local/lib](https://unix.stackexchange.com/questions/599341/what-is-the-difference-between-usr-lib-and-usr-local-lib)
+* cuda in `usr/local/cuda-`
+* what is in `.local/lib`? like `.local/lib/python3.10`
