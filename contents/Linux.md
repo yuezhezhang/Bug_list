@@ -41,7 +41,13 @@ top -cb | grep "dus_static" > cpu_info.txt
 
 11. [Show file size](https://kodekloud.com/blog/check-file-size-in-linux/#2-find-file-size-in-linux-using-the-ls-command)
 * `ls -lh FILENAME` show the size of the file
-* `ls -lhR` show all the files in the directory  
+* `ls -lhR` show all the files in the directory
+
+12. [Show linux free space](https://opensource.com/article/18/7/how-check-free-disk-space-linux)
+* `df -H`
+
+13. [Show current directory free space](https://stackoverflow.com/questions/8110530/check-free-disk-space-for-current-partition-in-bash)
+* `du -sh`
 
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
