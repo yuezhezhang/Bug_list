@@ -4,3 +4,7 @@
   ```
   sudo apt install libstdc++-12-dev
   ```
+* can not find glm headers, [see](https://stackoverflow.com/questions/28977455/why-cant-c-find-glm-headers)
+  ```
+  sudo apt-get install libglm-dev
+  ``` 
