@@ -17,7 +17,7 @@
   ```
   git rev-parse HEAD
   ```
-* update franka ip in `robotic/botop/src/Franka/franka.cpp` and `FrankaGripper.cpp`
+* update franka ip `192.168.2.55` in `robotic/botop/src/Franka/franka.cpp` and `FrankaGripper.cpp`
 * compile
   ```
   cd robotic
