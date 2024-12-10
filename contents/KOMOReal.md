@@ -21,6 +21,9 @@
 * compile
   ```
   cd robotic
+  # rm -rf build # if needed 
+  export PY_VERSION=`python3 -c "import sys; print(str(sys.version_info[0])+'.'+str(sys.version_info[1]))"`
+  cmake -DPY_VERSION=$PY_VERSION -DUSE_REALSENSE=OFF -DUSE_LIBFRANKA=ON . -B build
   make -C build _robotic install
 
   export PATH="$HOME/.local/bin:$PATH"
