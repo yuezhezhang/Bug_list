@@ -29,6 +29,10 @@
   export PATH="$HOME/.local/bin:$PATH"
   ry-bot -real -up -home
   ```
+
+## Apollo Installation 
+* install libfranka0.14.0 under ```~/git/``` [libfranka](https://github.com/frankaemika/libfranka/blob/main/README.md), and also needs to install [pinocchio](https://stack-of-tasks.github.io/pinocchio/download.html)
+* do not run ```./install.sh libfranka```, when installing robotic.
 * test code, no conda environment!
   ```
   import robotic as ry
