@@ -1,6 +1,6 @@
 ## Installation
 
-* follow the installation steps in [robotic](https://github.com/MarcToussaint/robotic), especially from **Installation from source with real Franka**
+* follow the installation steps in [robotic](https://github.com/MarcToussaint/robotic/tree/a9adb1b50cca67e614f88481371bb7d76ba0c25a), especially from **Installation from source with real Franka**
 * install physx error, fix this by [see](https://stackoverflow.com/questions/26380407/cmake-clang-is-not-able-compile-a-simple-test-program-fedora-20)
   ```
   sudo apt install libstdc++-12-dev
