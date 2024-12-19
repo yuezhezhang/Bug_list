@@ -35,6 +35,9 @@
 * install [libfranka0.14.0](https://github.com/frankaemika/libfranka/blob/main/README.md) under ```~/git/``` , and also needs to install [pinocchio](https://stack-of-tasks.github.io/pinocchio/download.html)
 * do not run ```./install.sh libfranka```, when installing robotic. robot server version 8, should install libfranka 0.14.0, [see](https://frankaemika.github.io/docs/compatibility.html)
 
+## Demeter and Athena
+* ip: 10.10.10.10
+
 ## Test Code
 
 * test code, no conda environment!
