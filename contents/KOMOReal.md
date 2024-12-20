@@ -35,6 +35,16 @@
 * install [libfranka0.14.0](https://github.com/frankaemika/libfranka/blob/main/README.md) under ```~/git/``` , and also needs to install [pinocchio](https://stack-of-tasks.github.io/pinocchio/download.html)
 * do not run ```./install.sh libfranka```, when installing robotic. robot server version 8, should install libfranka 0.14.0, [see](https://frankaemika.github.io/docs/compatibility.html)
 
+* add the following limits to the realtime group in ```/etc/security/limits.conf```
+```bash
+@realtime soft rtprio 99
+@realtime soft priority 99
+@realtime soft memlock 102400
+@realtime hard rtprio 99
+@realtime hard priority 99
+@realtime hard memlock 102400
+```
+
 ## Demeter and Athena
 * ip: 10.10.10.10
 * usrname: admin
