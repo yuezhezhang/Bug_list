@@ -37,6 +37,8 @@
 
 ## Demeter and Athena
 * ip: 10.10.10.10
+* usrname: admin
+* password: RZWjZAwtCzUFAgj 
 
 ## Test Code
 
