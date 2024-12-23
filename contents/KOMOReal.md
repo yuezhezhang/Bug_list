@@ -50,6 +50,12 @@
 * usrname: admin
 * password: RZWjZAwtCzUFAgj 
 
+
+## Setup for dual panda(Demeter and Apollo)
+
+* update franka ip `192.168.2.55` , `10.10.10.1` in `robotic/botop/src/Franka/franka.cpp` and `FrankaGripper.cpp`
+* set paramter `useArm` to `both` in `robotic/botop/src/BotOp/bot.cpp` 
+
 ## Test Code
 
 * test code, no conda environment!
