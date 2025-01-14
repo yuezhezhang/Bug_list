@@ -84,3 +84,18 @@ A = \begin{bmatrix}
 
 \end{document}
 ```
+9. [multiple images in a row](https://stackoverflow.com/questions/52628649/multiple-subfigures-in-a-row-in-a-latex-document)
+```
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\begin{figure}
+ \centering
+ \subfloat[]{\includegraphics[width=0.24\textwidth]{monalisa.jpg}} 
+ \subfloat[]{\includegraphics[width=0.24\textwidth]{monalisa.jpg}} 
+ \subfloat[]{\includegraphics[width=0.24\textwidth]{monalisa.jpg}}
+ \subfloat[]{\includegraphics[width=0.24\textwidth]{monalisa.jpg}}
+ \caption{(a) blah (b) blah (c) blah (d) blah}
+ \label{fig:foobar}
+\end{figure}
+```
