@@ -19,7 +19,7 @@
   cd rai  
   git reset --hard 8547d4380a2c5169f63d6fe18b6d234143cc59c4
   ```
-  for display current commit version
+* for display current commit version
   ```
   git rev-parse HEAD
   ```
