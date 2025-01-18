@@ -9,10 +9,15 @@
   ```
   sudo apt-get install libglm-dev
   ``` 
-* current robotic version 1.3 and update its submodule
+* current robotic version 1.10 and update its submodule
   ```
-  git reset --hard a9adb1b50cca67e614f88481371bb7d76ba0c25a
+  git reset --hard 0d246d1ecd84aa308eb78622b20193dc9db70969
   git submodule update --recursive
+  ```
+* update rai version
+  ```
+  cd rai  
+  git reset --hard 8547d4380a2c5169f63d6fe18b6d234143cc59c4
   ```
   for display current commit version
   ```
