@@ -99,3 +99,11 @@ A = \begin{bmatrix}
  \label{fig:foobar}
 \end{figure}
 ```
+10. [adjust table size](https://tex.stackexchange.com/questions/10863/is-there-a-way-to-slightly-shrink-a-table-including-font-size-to-fit-within-th)
+```
+\usepackage{graphics}
+\scalebox{0.9}{
+\begin{tabular}
+\end{tabular}
+}
+```
