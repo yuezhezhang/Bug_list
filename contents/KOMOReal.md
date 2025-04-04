@@ -8,7 +8,43 @@
 * can not find glm headers, [see](https://stackoverflow.com/questions/28977455/why-cant-c-find-glm-headers)
   ```
   sudo apt-get install libglm-dev
-  ``` 
+  ```
+* can not find lANN
+  ```
+  sudo apt-get install libann-dev
+  ./install.sh libann
+  ```
+* to disable pybind in CMakeLists.txt of botop
+  ```
+  option(USE_PYBIND "build python bindings" OFF)
+
+  # or in the terminal
+  # cmake -DUSE_PYBIND=OFF -DUSE_BULLET=OFF -DUSE_OPENCV=OFF -DPY_VERSION=$PY_VERSION . -B build 
+
+  if(USE_PYBIND)
+    add_custom_target(docstrings #ALL
+      DEPENDS _robotic
+      COMMAND env PYTHONPATH="." pybind11-stubgen --ignore-all-errors _robotic
+      COMMAND mv stubs/_robotic*/__init__.pyi _robotic.pyi
+      COMMAND mv stubs/_robotic*/*.pyi .)
+  endif()
+
+  if(USE_PYBIND)
+    message(STATUS "[rai] installing python packages in " ${PY_LIB_SITE}/robotic )
+  
+    install(
+      TARGETS _robotic
+      DESTINATION ${PY_LIB_SITE}/robotic)
+  
+    install(
+      DIRECTORY rai-robotModels
+      DESTINATION ${PY_LIB_SITE}/robotic
+      FILES_MATCHING
+      PATTERN "*.g" PATTERN "*.ply"
+      PATTERN "retired" EXCLUDE
+      )
+  endif()
+  ```
 * current robotic version 1.10 and update its submodule
   ```
   git reset --hard 0d246d1ecd84aa308eb78622b20193dc9db70969
