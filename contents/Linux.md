@@ -49,6 +49,9 @@ top -cb | grep "dus_static" > cpu_info.txt
 13. [Show current directory free space](https://stackoverflow.com/questions/8110530/check-free-disk-space-for-current-partition-in-bash)
 * `du -sh`
 
+14. [Disk usage analyzer](https://opensource.com/article/22/7/gui-disk-usage-analyzers-linux)
+* `baobab`
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
