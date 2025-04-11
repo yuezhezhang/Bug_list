@@ -29,3 +29,10 @@
    ```
 
 3. Vscode convert multiple lines to one line, hit `Ctrl + Shift + P` or in `preferences/keyboard shortcuts` search `joinLines`, I add the shortcut to be `Ctrl + J + K`
+
+## SDF
+1. [pytorch sdf](https://www.reddit.com/r/robotics/comments/1f3jy63/comment/lkgslk3/?context=3)
+* SDF of the robot or the scene can be used to do collision checking and resolution. You sample points on the surface of the robot in link frame, do forward kinematics to transform those points into world frame. Then you evaluate the SDF at each of those surface points, with any being negative meaning it's inside an object in the scene. That's contact detection, but you can also take the sum of the negative SDF values of all surface points (or some other aggregate), and autodiff through the forward kinematics to see how the joint angles should change to most quickly leave contact. Note that this is a local penetration resolution method and only works for small penetrations.
+* SDFs of objects to be manipulated (mugs, screw drivers) can be used to estimate the object pose when you observe a point cloud of surface points and points in free space. The consistency of the SDF value of those observation points with the actually observed semantics (is it on the object surface or in free space) can be used as a cost/energy to produce a set of plausible poses. This was our [CHSEL](https://github.com/UM-ARM-Lab/chsel) paper. For example see the mug animation for intuition. We also extended it to active exploration to reduce the object pose uncertainty in [RUMI](https://www.arxiv.org/pdf/2408.10450).
+* The closest library is open3d, however it does SDF computations on the CPU with numpy and is pretty slow when querying many points. `pytorch-volumetric` maintains all its data as pytorch tensors, optionally on the GPU. It can be more than 1000x faster for lookups of SDF values and gradients if querying a large number of points and cuda is enabled
+* [open3d.geometry.estimate_normals](https://www.open3d.org/docs/0.7.0/python_api/open3d.geometry.estimate_normals.html)
