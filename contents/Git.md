@@ -1,6 +1,8 @@
 ## Git
 1. Git submodule 
 * [easy way to pull all submodules](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules)
+  * first time `git submodule update --init --recursive`
+  * otherwise `git submodule update --recursive`
 * [common code already exists in the index](https://stackoverflow.com/questions/12898278/issue-with-adding-common-code-as-git-submodule-already-exists-in-the-index)
 * [some steps](https://www.jianshu.com/p/9000cd49822c)
 * [git submodule push](https://stackoverflow.com/questions/5814319/git-submodule-push/10878273#10878273)
