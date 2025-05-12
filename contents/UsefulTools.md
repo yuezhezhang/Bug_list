@@ -15,3 +15,8 @@
    * [video compress](https://www.freeconvert.com/video-compressor/)
 9. [Creatly](https://app.creately.com/d/start/dashboard)
    * draw ppt diagram
+10. [Online mesh creator](https://app.meshinspector.com/RMI/)
+11. [Video compressor](https://www.freeconvert.com/video-compressor)
+12. Adobe, needs account
+   * Adobe Premiere, video editing, speed up, blur
+   * Adobe Illustrator, draw diagram
