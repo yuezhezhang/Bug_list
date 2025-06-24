@@ -86,8 +86,9 @@
 @realtime hard memlock 102400
 ```
 
-## Demeter and Athena
-* ip: 10.10.10.10
+## Demeter, Apollo, and Athena
+* PC login: irosa-komo123
+* ip: 10.10.10.10, 9.9.9.9
 * usrname: admin
 * password: RZWjZAwtCzUFAgj 
 
