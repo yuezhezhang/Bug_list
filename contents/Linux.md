@@ -52,6 +52,9 @@ top -cb | grep "dus_static" > cpu_info.txt
 14. [Disk usage analyzer](https://opensource.com/article/22/7/gui-disk-usage-analyzers-linux)
 * `baobab`
 
+15. [Terminator open multiple terminals](https://askubuntu.com/questions/612131/how-to-display-more-than-1-terminal-simultaneously)
+* `Ctrl + Shift + O`
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
