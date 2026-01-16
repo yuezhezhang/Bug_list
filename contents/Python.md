@@ -135,6 +135,33 @@
   else:
      print('heyyy') # here
   ```
+
+### Mutable
+* [arguments passed to a function are by reference](https://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference)
+  * if it is a mutable object, and we do in-place operation inside, it will also influence outside
+  * if it is a mutable object, and we rebind the reference inside, it will not influence outside
+  * if it is a immutable object, we can not influence outside
+* mutable objects: list, np array
+* immutable objects: string, number,boolean, tuples
+* mutable objects: list, dictionary, sets, np array, torch tensors
+* ```
+  import numpy as np
+  a = np.zeros(1) # numpy array is mutable
+  # a = 1 # not mutable
+   
+  # In Python, when you pass an argument to a function, you aren't passing a "copy" of the data; 
+  # you are passing a reference to the object in memory.
+   
+  def test_b(b):
+     # refering to the memory location
+     # b+= 1 # in-place operation
+     # b = np.random.random(1) # local assignement
+     b[:] = np.random.random(1) # in-place operations
+  
+  for _ in range(3):
+     print(a)
+     test_b(a)
+  ```
   
 ### Matplotlib
 * [PLot a circle](https://stackoverflow.com/questions/9215658/plot-a-circle-with-pyplot)
