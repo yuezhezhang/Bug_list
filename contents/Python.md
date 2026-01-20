@@ -162,6 +162,18 @@
      print(a)
      test_b(a)
   ```
+* ```
+  a, b = [[]] * 2
+  print(a is b) # Output: True (They are the same object)
+
+  x, y = [], []
+  print(x is y) # Output: False (They are different objects)
+
+  x, y = [[] for _ in range(2)]
+  print(x is y) # Output: False (They are different objects)
+
+  [[]] is a list containing one empty list. Let’s call that inner list List_Object_A. When you do [[]] * 2, Python performs a "shallow copy." It results in: [List_Object_A, List_Object_A]
+  ```
   
 ### Matplotlib
 * [PLot a circle](https://stackoverflow.com/questions/9215658/plot-a-circle-with-pyplot)
