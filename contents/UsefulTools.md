@@ -28,3 +28,38 @@
     * but now get "ImportError: libcblas.so.3: cannot open shared object file: No such file or directory", not working using [this](https://stackoverflow.com/questions/53347759/importerror-libcblas-so-3-cannot-open-shared-object-file-no-such-file-or-dire/54954503) and [that](https://stackoverflow.com/questions/75414336/libblas-so-3-cannot-open-shared-object-file-no-such-file-or-directory-but-it)
 15. video to png
     * `ffmpeg -i video.mp4 frame%04d.png`
+16. [merge gifs using imageio](https://stackoverflow.com/questions/73431547/how-do-i-connect-two-gifs-to-play-one-after-another-in-python)
+    ```
+    import imageio.v3 as iio
+    import numpy as np
+
+    # assume same FPS
+    frames = np.vstack([
+        iio.imread("my_first.gif"),
+        iio.imread("my_second.gif"),
+    ])
+    
+    # get duration each frame is displayed
+    duration = iio.immeta("my_first.gif")["duration"]
+    
+    iio.imwrite("combined.gif", frames, duration=duration)
+    ```
+17. [images to gif using imageio](https://stackoverflow.com/questions/41228209/making-gif-from-images-using-imageio-in-python?__cf_chl_tk=q0BQAsfZzhcKkJDSppuojedkZ9ucjIJk9jtdA9uW3LE-1770127071-1.0.1.1-O24t37dmX83Bwf4dpoWwxBZUWp88o2jo_Ki7jF2DeMw)
+    ```
+    import os
+    import imageio
+    
+    png_dir = '../animation/png'
+    images = []
+    for file_name in sorted(os.listdir(png_dir)):
+        if file_name.endswith('.png'):
+            file_path = os.path.join(png_dir, file_name)
+            images.append(imageio.imread(file_path))
+    
+    # Make it pause at the end so that the viewers can ponder
+    for _ in range(10):
+        images.append(imageio.imread(file_path))
+    
+    # imageio.mimsave('../animation/gif/movie.gif', images, fps=55)
+    iio.imwrite("../animation/gif/movie.gif", images, duration=0.1)
+    ```
