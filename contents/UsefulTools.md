@@ -20,7 +20,7 @@
 12. Adobe, needs account
     * Adobe Premiere, video editing, speed up, blur
     * Adobe Illustrator, draw diagram
-    * Adobe Express, put some images together
+    * Adobe Express, put some images/videos together, resize the template, drag in and move videos
 13. pngs to mp4 (quality is ok)
     * `ffmpeg -framerate 30 -i frame_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p output.mp4`, check [this](https://stackoverflow.com/questions/24961127/how-to-create-a-video-from-images-with-ffmpeg)
 14. pngs to high quality gif
