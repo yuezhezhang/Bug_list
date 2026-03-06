@@ -55,6 +55,12 @@ top -cb | grep "dus_static" > cpu_info.txt
 15. [Terminator open multiple terminals](https://askubuntu.com/questions/612131/how-to-display-more-than-1-terminal-simultaneously)
 * `Ctrl + Shift + O` and drag the terminals
 
+## Remove cache
+* `rm -rf ~/.cache/pip`
+* `rm -rf ~/.cache/pypoetry/cache ~/.cache/pypoetry/artifacts`
+* `uv cache prune`
+* `conda clean --all` to remove unused packages and downloaded compressed files. 
+
 ## Installation
 1. To install [rosbash](http://wiki.ros.org/rosbash) (including command rosrun)
 ```
