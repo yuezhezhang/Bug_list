@@ -34,7 +34,11 @@
    * in `REPL` mode
    * heap allocation, for either mutable objects or for creating/growing variable-sized containers (such as Array or Dict, strings, or "type-unstable" objects whose type is only known at runtime).
    * in stack, immutable values like numbers (except bignums), tuples, and immutable structs can be stored much more cheaply
+   * [reset elements in a matrix with less memory allocation](https://discourse.julialang.org/t/how-to-reset-the-elements-of-a-3x3-matrix-without-any-memory-allocation/100257/2)
 6. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
    * In many languages with optional type declarations, adding declarations is the principal way to make code run faster. This is not the case in Julia. In Julia, the compiler generally knows the types of all function arguments, local variables, and expressions. However, there are a few specific instances where declarations are helpful.
    * [tools](https://docs.julialang.org/en/v1/manual/performance-tips/#tools)
    * type instability, use @code_warntype in `REPL` mode
+   * [Cthulhu](https://github.com/JuliaDebug/Cthulhu.jl)
+   * A thorough [benckmark.jl](https://github.com/JuliaCI/BenchmarkTools.jl) 
+7. Julia is not object-oriented, [see](https://stackoverflow.com/questions/76674552/what-is-the-julia-equivalent-to-classes-and-instance-variables-in-java)
