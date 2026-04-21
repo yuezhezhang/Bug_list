@@ -71,6 +71,16 @@
     println(a)
     println(typeof(a))
     ```
+12. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
+    * @btime (from BenchmarkTools.jl) is designed for accurate benchmarking by running code multiple times, discarding compilation, and reporting the minimum time. 
+    * @time is a built-in macro that reports the time and allocations of a single run, including compilation overhead, making it better for a quick check. 
+    * Using @benchmark is unbiased, also reports the mean and standard deviation
+    * In the code, you can use the macros:
+      * `@time a = rand(1000, 1000)`
+      * `@btime b = rand(1000, 1000)`
+    * In the terminal `REPL` mode, run:
+      * `@benchmark f_function()` 
+
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
