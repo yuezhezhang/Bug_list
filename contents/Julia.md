@@ -71,3 +71,25 @@
     println(a)
     println(typeof(a))
     ```
+
+# Parallelization
+* Physical core: number of physical cores, actual hardware components.
+* Logical cores are the number of physical cores times the number of threads that can run on each core through the use of hyperthreading.
+   * With HTT, one physical core appears as two processors to the operating system, allowing concurrent scheduling of two processes per core. See [hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading)
+* run `lscpu`:
+  ```
+   Architecture:                         x86_64
+   CPU op-mode(s):                       32-bit, 64-bit
+   Byte Order:                           Little Endian
+   Address sizes:                        48 bits physical, 48 bits virtual
+   CPU(s):                               32
+   On-line CPU(s) list:                  0-31
+   Thread(s) per core:                   2
+   Core(s) per socket:                   16
+   Socket(s):                            1
+  ```
+  it shows:
+   * Physical Cores: 16 (Core(s) per socket)
+   * Logical Threads: 32 (CPU(s))
+* [julia-for-hpc](https://enccs.github.io/julia-for-hpc/multithreading/)
+
