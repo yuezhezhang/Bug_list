@@ -63,3 +63,6 @@
     # imageio.mimsave('../animation/gif/movie.gif', images, fps=55)
     iio.imwrite("../animation/gif/movie.gif", images, duration=0.1)
     ```
+18. 3d print
+    * transfer stl to gcode, using [printables.com/slice](https://www.printables.com/slice)
+    * K1C printer (0.4mm nozzle)
