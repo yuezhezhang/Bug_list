@@ -80,7 +80,7 @@
       * `@btime b = rand(1000, 1000)`
     * In the terminal `REPL` mode, run:
       * `@benchmark f_function()`
-13. `map(f, array)` applies a function to each value of an array and returns a **new** array containing the resulting values.
+13. `map(f, array)` applies a function to each value of an array/StaticArray and returns a **new** array/StaticArray containing the resulting values.
     * ```
       julia> map(x -> x * 2, [1, 2, 3])
       3-element Vector{Int64}:
@@ -89,7 +89,38 @@
        6
       ```
     * `map!(f, array)` stores the result in the same array.
-14. `round(a)`, round a number to integer (round half to even) round a number to integer `round(a, digits=3)` round a number with given digits
+14. `mapslices(f, A, dims)` transforms the given dimensions of array A using function f. The dims argument determines which dimensions are sliced (e.g., dims=1 for columns, dims=2 for rows).
+ * sum along the col dimension
+   ```
+   julia> A = [1 2 3; 4 5 6; 7 8 9];
+
+   julia> mapslices(sum, A, dims=1)
+   3×1 Matrix{Int64}:
+    12
+    15
+    18
+   ```
+* product along the row dimension
+   ```
+   julia> B = [1 2 3; 4 5 6; 7 8 9; 10 11 12];
+   julia> mapslices(prod, B, dims=2)
+   4×1 Matrix{Int64}:
+      6
+    120
+    504
+   1320
+   ```
+* mean of all elements in the matrix
+    ```
+    julia> C = [1 2 3; 4 5 6; 7 8 9; 10 11 12];
+   
+    julia> mapslices(mean, C, dims=[1, 2])
+    1×1 Matrix{Float64}:
+     6.5
+    ```
+* mapslices not working on StaticArray, mapslices is designed to be Type-Unstable—it works by slicing up the array into little pieces and then trying to glue them back together at runtime. For similar behaviour of `mapslices(f, a, dims=1)` for StaticArray, you can do Comprehension or Broadcasting on the columns/rows directly
+  * results = [f(col) for col in eachcol(a)]
+15. `round(a)`, round a number to integer (round half to even) round a number to integer `round(a, digits=3)` round a number with given digits
     * round(2.5) --> 2
     * round(3.5) --> 4
     * ```
@@ -98,11 +129,11 @@
 
       round.(a, digits=3) # using broadcasting
       ```
-15. [map vs broadcasting](https://discourse.julialang.org/t/when-to-use-broadcasting-with-vs-map/58078/2)
+16. [map vs broadcasting](https://discourse.julialang.org/t/when-to-use-broadcasting-with-vs-map/58078/2)
     * map is designed to handle sequences **generic iterables**, while broadcasting is designed to handle **arrays/dimensions**. Broadcasting will try to convert the geenric iterables to arrays by collect(seq), which creates memory allocation for new data
     * Use Broadcasting (.) when your data is already in Arrays or Matrices and you want to do math across dimensions (like adding a column to every column of a matrix).
     * Use map (or comprehensions [f(x) for x in seq]) when your input is a Set, a Generator, or a Lazy Iterator where you just want to transform a sequence of values without worrying about "grid alignment."
-16. **Generic Iterables** usually refers to collections that don't have a fixed grid-like structure or indices:
+17. **Generic Iterables** usually refers to collections that don't have a fixed grid-like structure or indices:
     * Generators: Objects created by syntax like (x^2 for x in 1:10). These don't store data in memory; they calculate the next value on the fly.
     * Sets (Set): Collections of unique elements where the order doesn't matter and there are no "axes" or "coordinates."
     * Dictionaries (Dict): Collections of Key-Value pairs
