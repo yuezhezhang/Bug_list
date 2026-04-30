@@ -121,27 +121,98 @@
 * mapslices not working on StaticArray, mapslices is designed to be Type-Unstable—it works by slicing up the array into little pieces and then trying to glue them back together at runtime. For similar behaviour of `mapslices(f, a, dims=1)` for StaticArray, you can do Comprehension or Broadcasting on the columns/rows directly
   * results = [f(col) for col in eachcol(a)]
 15. `round(a)`, round a number to integer (round half to even) round a number to integer `round(a, digits=3)` round a number with given digits
-    * round(2.5) --> 2
-    * round(3.5) --> 4
-    * ```
-      a = [1.099, 2.999, 3.28]
-      map(x->round(x, digits=3), a)
+ * round(2.5) --> 2
+ * round(3.5) --> 4
+ * ```
+   a = [1.099, 2.999, 3.28]
+   map(x->round(x, digits=3), a)
 
-      round.(a, digits=3) # using broadcasting
-      ```
+   round.(a, digits=3) # using broadcasting
+   ```
 16. [map vs broadcasting](https://discourse.julialang.org/t/when-to-use-broadcasting-with-vs-map/58078/2)
-    * map is designed to handle sequences **generic iterables**, while broadcasting is designed to handle **arrays/dimensions**. Broadcasting will try to convert the geenric iterables to arrays by collect(seq), which creates memory allocation for new data
-    * Use Broadcasting (.) when your data is already in Arrays or Matrices and you want to do math across dimensions (like adding a column to every column of a matrix).
-    * Use map (or comprehensions [f(x) for x in seq]) when your input is a Set, a Generator, or a Lazy Iterator where you just want to transform a sequence of values without worrying about "grid alignment."
+ * map is designed to handle sequences **generic iterables**, while broadcasting is designed to handle **arrays/dimensions**. Broadcasting will try to convert the geenric iterables to arrays by collect(seq), which creates memory allocation for new data
+ * Use Broadcasting (.) when your data is already in Arrays or Matrices and you want to do math across dimensions (like adding a column to every column of a matrix).
+ * Use map (or comprehensions [f(x) for x in seq]) when your input is a Set, a Generator, or a Lazy Iterator where you just want to transform a sequence of values without worrying about "grid alignment."
 17. **Generic Iterables** usually refers to collections that don't have a fixed grid-like structure or indices:
-    * Generators: Objects created by syntax like (x^2 for x in 1:10). These don't store data in memory; they calculate the next value on the fly.
-    * Sets (Set): Collections of unique elements where the order doesn't matter and there are no "axes" or "coordinates."
-    * Dictionaries (Dict): Collections of Key-Value pairs
-    * Tuples and NamedTuples: Immutable sequences of fixed length.
-    * Strings: Technically a collection of characters.
-    * Lazy Collections: Like those provided by Iterators.filter or Iterators.flatten.
+ * Generators: Objects created by syntax like (x^2 for x in 1:10). These don't store data in memory; they calculate the next value on the fly.
+ * Sets (Set): Collections of unique elements where the order doesn't matter and there are no "axes" or "coordinates."
+ * Dictionaries (Dict): Collections of Key-Value pairs
+ * Tuples and NamedTuples: Immutable sequences of fixed length.
+ * Strings: Technically a collection of characters.
+ * Lazy Collections: Like those provided by Iterators.filter or Iterators.flatten.
+18. copy vs deepcopy
+* copy: A shallow copy creates a new "container",  but the elements inside the container still point to the exact same memory locations as the original.
+   * For simple values (like Float64, Int, or StaticArrays): It behaves like a full copy because these types are immutable.
+   * For **nested** mutable objects: It only copies the references.
+* deepcopy: A deepcopy is recursive. It looks at the object, copies it, and then looks at every object inside that object and copies those too. It continues until everything in the entire structure has its own unique spot in memory.
+* For a a Vector{Float64} or Vector{SVector}, copy and deepcopy are identical because Float64 and SVector are immutable. And copy is faster than deepcopy.
+* For a Vector{Vector{Float64}} or LibGEOS.Polygon, copy is dangerous, deepcopy is necessary.
+   * LibGEOS object is essentially a Julia wrapper around a C pointer, copy simply duplicates that pointer address.
+19. Be careful about the global variable in benchmark.
+* We define
+  ```
+  function test_deepcopy(polygon)
+      deepcopy(polygon)
+  end
+  ```
+* and in REPL, run `free_space = LibGEOS.Polygon([[[0., 0.], [1.0, 0.], [1.0, 1.0], [0., 1.0], [0., 0.]]])`
+  ```
+   @benchmark deepcopy(free_space1)
+   BenchmarkTools.Trial: 10000 samples with 719 evaluations per sample.
+    Range (min … max):  153.656 ns … 74.655 μs  ┊ GC (min … max):  0.00% … 99.59%
+    Time  (median):     251.708 ns              ┊ GC (median):     0.00%
+    Time  (mean ± σ):   257.591 ns ±  1.096 μs  ┊ GC (mean ± σ):  11.04% ±  4.06%
+   
+       █▇                           ▂▂   ▂                         
+     ▂▅██▅▃▂▂▂▃▅▃▂▂▂▁▂▂▁▂▂▁▁▁▂▂▂▂▁▂▅██▇▆▇██▅▃▄▃▃▄▅▄▃▂▂▂▂▂▂▂▂▂▂▂▂▂ ▃
+     154 ns          Histogram: frequency by time          336 ns <
+   
+    Memory estimate: 400 bytes, allocs estimate: 6.
 
-    
+   @benchmark test_deepcopy(free_space1)
+   BenchmarkTools.Trial: 10000 samples with 842 evaluations per sample.
+    Range (min … max):  118.431 ns …  65.417 μs  ┊ GC (min … max):  0.00% … 99.61%
+    Time  (median):     209.131 ns               ┊ GC (median):     0.00%
+    Time  (mean ± σ):   216.129 ns ± 976.950 ns  ┊ GC (mean ± σ):  12.42% ±  4.75%
+   
+      ▃█▃     ▁                    ▅                                
+     ▄███▄▃▂▂▆█▅▃▂▂▂▂▂▂▂▂▂▂▂▃▅▇▅▅▆███▅▆▅▄▅▅▄▃▃▂▂▂▂▂▂▂▂▂▁▁▁▂▂▂▂▂▂▂▂ ▃
+     118 ns           Histogram: frequency by time          333 ns <
+   
+    Memory estimate: 400 bytes, allocs estimate: 6.
+
+  ```
+* the difference is because:
+  * `@benchmark deepcopy(free_space1)`: Every time the benchmark runs (thousands of times), Julia has to look up free_space1, check its type to make sure it hasn't changed (since globals are mutable), and then find the correct version of deepcopy to call. This "dynamic lookup" adds a huge overhead of ~40 nanoseconds.
+  * `@benchmark test_deepcopy(free_space1)`: While the initial call to test_clone also has a lookup, once you are inside the function, the variable polygon becomes a local variable. Julia knows exactly what type it is for the duration of that function. The compiler "specializes" the code, making the call to the C-library much more direct.
+* In Julia benchmarking, you should never pass a global variable directly. You must use the $ sign to "interpolate" the variable. This tells BenchmarkTools to "freeze" the variable and its type before the timing starts.
+  ```
+  @benchmark deepcopy($free_space1)
+   BenchmarkTools.Trial: 10000 samples with 846 evaluations per sample.
+    Range (min … max):  117.564 ns …  66.667 μs  ┊ GC (min … max):  0.00% … 99.59%
+    Time  (median):     205.778 ns               ┊ GC (median):     0.00%
+    Time  (mean ± σ):   206.840 ns ± 970.879 ns  ┊ GC (mean ± σ):  12.86% ±  4.67%
+   
+        █▃                                                          
+     ▂▃███▅▃▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▁▂▁▂▂▁▂▁▂▂▁▂▂▂▃▅▆▆▅▄▅▆▆▅▄▃▄▄▄▄▄▃▃▃▃▂▂ ▃
+     118 ns           Histogram: frequency by time          251 ns <
+   
+    Memory estimate: 400 bytes, allocs estimate: 6.
+  ```
+* LibGEPS.clone is more efficient than deepcopy
+  ```
+   @benchmark LibGEOS.clone($free_space1)
+   BenchmarkTools.Trial: 10000 samples with 982 evaluations per sample.
+    Range (min … max):  60.081 ns …  1.060 μs  ┊ GC (min … max): 0.00% … 0.00%
+    Time  (median):     76.934 ns              ┊ GC (median):    0.00%
+    Time  (mean ± σ):   76.602 ns ± 11.089 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%
+   
+                          ▂           ▄▆█▇█▅▂▁▂▁▂                 
+     ▁▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▃███▇▅▃▂▁▁▂▃▅█████████████▆▅▄▄▃▄▃▃▃▂▂▂▂▂ ▃
+     60.1 ns         Histogram: frequency by time        87.1 ns <
+   
+    Memory estimate: 32 bytes, allocs estimate: 1.
+  ```
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
