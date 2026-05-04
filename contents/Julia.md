@@ -213,6 +213,39 @@
    
     Memory estimate: 32 bytes, allocs estimate: 1.
   ```
+20. Static Type Information = Compile-Time Constants.
+* For SMatrix and SVector, calling size() is effectively asking the compiler for the number it already knows.
+* ```
+  function f(p::NamedTuple)
+     M = size(p.A, 1)
+     for i in 1:M
+     # ...
+     end
+  end
+  p = (A = SA[0. 0.; 1. 2.], B = SA[0.; 0.])
+  ```
+  Here `M` is known at compile time. Even though it looks like a standard variable assignment, Julia’s compiler performs Constant Folding. How it works under the hood:
+  * Specialization: Every time you call `f` with a new "shape" of data, Julia creates a new version of the function specialized for those exact types.
+  * Type Information: Because p.A is a SMatrix{M, 2, T}, the number M is literally part of its Type.
+  * Compiler Logic: When the compiler sees size(p.A, 1), it doesn't look at the data in RAM. It looks at the Type Metadata. It says: "I'm compiling the version of this function where the first argument is an SMatrix with 2 rows. Therefore, M is 2."
+  * Replacement: The compiler replaces the variable M with the literal number 2 everywhere in the code before it even finishes generating the machine instructions.
+  check the "LLVM" (the machine code instructions), you won't see a single "find size" or "allocate" command.
+  ```
+  @code_typed f(p)
+  ```
+* **When would it NOT be known at compile time?**
+The only way to break this is by losing Type Stability. This happens if you store your matrices in a way that hides their dimensions from the compiler, such as:
+  * Using a standard Array (e.g., Matrix{Float64}) instead of SMatrix.
+  * Passing the NamedTuple as a NamedTuple{..., Any}.
+  * Storing your p inside a Vector{Any}.
+* to extract elements from namedtyple, do `(; A, B) = p`
+  * The semicolon `;` tells Julia to ignore the order and match the variables to the names (keys) inside the NamedTuple.
+  * `(; B, A) = p` --> `A = SA[0. 0.; 1. 2.], B = SA[0.; 0.]`
+* `(A, B) = p`
+  * This treats p like a standard list/tuple. It ignores the names and looks only at the index (order).
+  * `(B, A) = p` --> `B = SA[0. 0.; 1. 2.], A = SA[0.; 0.]` Wrong!
+21. [Pure function](https://discourse.julialang.org/t/can-programming-in-julia-be-pure/71165)
+* A pure function in Julia is a function that produces the same output for the same input and has no side effects, such as modifying global state or input arguments. While Julia is imperative and encourages mutation, pure functions are valuable for performance optimizations, such as compile-time evaluation.
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
