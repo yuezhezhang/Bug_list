@@ -246,6 +246,9 @@ The only way to break this is by losing Type Stability. This happens if you stor
   * `(B, A) = p` --> `B = SA[0. 0.; 1. 2.], A = SA[0.; 0.]` Wrong!
 21. [Pure function](https://discourse.julialang.org/t/can-programming-in-julia-be-pure/71165)
 * A pure function in Julia is a function that produces the same output for the same input and has no side effects, such as modifying global state or input arguments. While Julia is imperative and encourages mutation, pure functions are valuable for performance optimizations, such as compile-time evaluation.
+* rand() is impure: It changes the internal state of the "seed".
+  * If the compiler deleted a call to rand(), the next time you called rand(), you would get the "wrong" number because the seed wouldn't have advanced.
+  * The compiler is forbidden from deleting code that has "side effects" like updating a global state.
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
