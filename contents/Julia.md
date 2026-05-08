@@ -203,6 +203,7 @@
   ```
    @benchmark LibGEOS.clone($free_space1)
    BenchmarkTools.Trial: 10000 samples with 982 evaluations per sample.
+  
     Range (min … max):  60.081 ns …  1.060 μs  ┊ GC (min … max): 0.00% … 0.00%
     Time  (median):     76.934 ns              ┊ GC (median):    0.00%
     Time  (mean ± σ):   76.602 ns ± 11.089 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%
@@ -244,12 +245,20 @@ The only way to break this is by losing Type Stability. This happens if you stor
 * `(A, B) = p`
   * This treats p like a standard list/tuple. It ignores the names and looks only at the index (order).
   * `(B, A) = p` --> `B = SA[0. 0.; 1. 2.], A = SA[0.; 0.]` Wrong!
-21. [Pure function](https://discourse.julialang.org/t/can-programming-in-julia-be-pure/71165)
+21. [Make entire function constant fold](https://discourse.julialang.org/t/make-entire-function-constant-fold/45229) and [generated function](https://docs.julialang.org/en/v1/manual/metaprogramming/#Generated-functions-1)
+22. [Pure function](https://discourse.julialang.org/t/can-programming-in-julia-be-pure/71165)
 * A pure function in Julia is a function that produces the same output for the same input and has no side effects, such as modifying global state or input arguments. While Julia is imperative and encourages mutation, pure functions are valuable for performance optimizations, such as compile-time evaluation.
 * rand() is impure: It changes the internal state of the "seed".
   * If the compiler deleted a call to rand(), the next time you called rand(), you would get the "wrong" number because the seed wouldn't have advanced.
   * The compiler is forbidden from deleting code that has "side effects" like updating a global state.
-
+23. Symbol
+* [what is a symbol](https://stackoverflow.com/questions/23480722/what-is-a-symbol-in-julia)
+* ```
+  a = 1
+  :a # a symbol
+  i=2
+  b = Symnol("name_", i)
+  ```
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
 * Logical cores are the number of physical cores times the number of threads that can run on each core through the use of hyperthreading.
