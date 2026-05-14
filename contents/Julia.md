@@ -16,13 +16,14 @@
    @btime SVector(1.1, 1.2, 1.3, 1.4, 1.5) # 0.980 ns (0 allocations: 0 bytes)
    @btime SVector{5}([1.1, 1.2, 1.3, 1.4, 1.5]) # 8.710 ns (1 allocation: 64 bytes)
    ```
-4. `...` is the splat operator
+4. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
+5. `...` is the splat operator
    ```
    a = [[1, 1], [1, 2], [1, 4]] # 3 element vector
    vcat(a...) # 6 element vector
    @btime vcat($a...) # 40.232 ns (2 allocations: 112 bytes)
    ```
-5. slicing
+6. slicing
    ```
    a = SA[1.; 2.; 4.; 5.]
    a[2:3] # Vector
@@ -38,7 +39,7 @@
    @btime SVector($a[2:3]...) # 497.990 ns (7 allocations: 208 bytes)
    
    ```
-6. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
+7. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
    ```
    i = 0 # defined in global
    while i < 5
@@ -56,19 +57,19 @@
       end
    end
    ```
-7. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
+8. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
    * in `REPL` mode
    * heap allocation, for either mutable objects or for creating/growing variable-sized containers (such as Array or Dict, strings, or "type-unstable" objects whose type is only known at runtime).
    * in stack, immutable values like numbers (except bignums), tuples, and immutable structs can be stored much more cheaply
    * [reset elements in a matrix with less memory allocation](https://discourse.julialang.org/t/how-to-reset-the-elements-of-a-3x3-matrix-without-any-memory-allocation/100257/2)
-8. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
+9. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
    * In many languages with optional type declarations, adding declarations is the principal way to make code run faster. This is not the case in Julia. In Julia, the compiler generally knows the types of all function arguments, local variables, and expressions. However, there are a few specific instances where declarations are helpful.
    * [tools](https://docs.julialang.org/en/v1/manual/performance-tips/#tools)
    * type instability, use @code_warntype in `REPL` mode
    * [Cthulhu](https://github.com/JuliaDebug/Cthulhu.jl)
    * A thorough [benckmark.jl](https://github.com/JuliaCI/BenchmarkTools.jl) 
-9. Julia is not object-oriented, [see](https://stackoverflow.com/questions/76674552/what-is-the-julia-equivalent-to-classes-and-instance-variables-in-java)
-10. `vcat(a, b)` is the same as `[a; b]`, but they both create a new array in memory and can be slow. `append!(a, b)` is faster, only modifies existing memory
+10. Julia is not object-oriented, [see](https://stackoverflow.com/questions/76674552/what-is-the-julia-equivalent-to-classes-and-instance-variables-in-java)
+11. `vcat(a, b)` is the same as `[a; b]`, but they both create a new array in memory and can be slow. `append!(a, b)` is faster, only modifies existing memory
     ```
     a = Vector{Vector{Float64}}()
     for i in 1:3
@@ -81,7 +82,7 @@
     println(a)
     println(typeof(a))
     ```
-11. push!() is also fast
+12. push!() is also fast
     ```
     a = Vector{Vector{Float64}}()
     for i in 1:3
@@ -92,7 +93,7 @@
     println(a)
     println(typeof(a))
     ```
-12. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
+13. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
     * @btime (from BenchmarkTools.jl) is designed for accurate benchmarking by running code multiple times, discarding compilation, and reporting the minimum time. 
     * @time is a built-in macro that reports the time and allocations of a single run, including compilation overhead, making it better for a quick check. 
     * Using @benchmark is unbiased, also reports the mean and standard deviation
@@ -101,7 +102,7 @@
       * `@btime b = rand(1000, 1000)`
     * In the terminal `REPL` mode, run:
       * `@benchmark f_function()`
-13. `map(f, array)` applies a function to each value of an array/StaticArray and returns a **new** array/StaticArray containing the resulting values.
+14. `map(f, array)` applies a function to each value of an array/StaticArray and returns a **new** array/StaticArray containing the resulting values.
     * ```
       julia> map(x -> x * 2, [1, 2, 3])
       3-element Vector{Int64}:
@@ -110,7 +111,7 @@
        6
       ```
     * `map!(f, array)` stores the result in the same array.
-14. `mapslices(f, A, dims)` transforms the given dimensions of array A using function f. The dims argument determines which dimensions are sliced (e.g., dims=1 for columns, dims=2 for rows).
+15. `mapslices(f, A, dims)` transforms the given dimensions of array A using function f. The dims argument determines which dimensions are sliced (e.g., dims=1 for columns, dims=2 for rows).
  * sum along the col dimension
    ```
    julia> A = [1 2 3; 4 5 6; 7 8 9];
@@ -280,6 +281,9 @@ The only way to break this is by losing Type Stability. This happens if you stor
   i=2
   b = Symnol("name_", i)
   ```
+24. [inline](https://aviatesk.github.io/posts/inlining-101/)
+    * it eliminates the overhead of the function call
+    * it may increase the chances of other optimizations
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
 * Logical cores are the number of physical cores times the number of threads that can run on each core through the use of hyperthreading.
