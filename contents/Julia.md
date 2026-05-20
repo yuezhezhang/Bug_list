@@ -16,14 +16,54 @@
    @btime SVector(1.1, 1.2, 1.3, 1.4, 1.5) # 0.980 ns (0 allocations: 0 bytes)
    @btime SVector{5}([1.1, 1.2, 1.3, 1.4, 1.5]) # 8.710 ns (1 allocation: 64 bytes)
    ```
-4. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
-5. `...` is the splat operator
+4. Standard Assignment `=` does not make a copy of the array a, it simply binds the name b to the same array a
+   ```
+   # Standard assignment
+   b = [1, 2, 3]
+   a = b         # a now points to the exact same array as b
+   b[1] = 99     # modifying b changes a as well
+   
+   # Using copy
+   b = [1, 2, 3]
+   a = copy(b)   # a is a new, independent array
+   b[1] = 99     # modifying b does not change a
+
+   a = [1, 2, 3]
+   b = a  # b now points to the exact same array as a
+   a = a + [1, 1, 1] 
+   # 'a' is rebound to a newly created array: [2, 3, 4]
+   # 'b' remains the original array: [1, 2, 3]
+   ```
+   * Element-wise Assignment (.+= or .=)Broadcasts the operation to every element of the array without allocating a new array in memory.
+   ```
+   x = [1, 2, 3]
+   y = [4, 5, 6]
+   
+   x .+= y  
+   # Equivalent to x .= x .+ y.
+   # This modifies 'x' in place, changing it to [5, 7, 9].
+   ```
+   * You should prefer .= when working with arrays or data structures for two main reasons:
+     * Memory Efficiency: It mutates an existing array in place rather than allocating a brand new vector for the result. This is crucial for avoiding garbage collection overhead in performance-sensitive code.
+     * Loop Fusion: Multiple dotted operations will fuse together into a single loop, vastly improving calculation speed.
+   * [Distinguish assignment and mutation](https://docs.julialang.org/en/v1/manual/variables/#man-assignment-expressions)
+   * By [convention](https://docs.julialang.org/en/v1/manual/functions/#man-argument-passing), functions that mutate one or more of their arguments have names ending with !.
+     ```
+     function f(x, y)
+        x[1] = 42    # mutates x
+        y = 7 + y    # new binding for y, no mutation
+        return y
+     end
+     ```
+     such a function would typically be named f!(x, y) rather than f(x, y)
+5. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
+6. `...` is the splat operator
    ```
    a = [[1, 1], [1, 2], [1, 4]] # 3 element vector
    vcat(a...) # 6 element vector
    @btime vcat($a...) # 40.232 ns (2 allocations: 112 bytes)
    ```
-6. slicing
+7. slicing
    ```
    a = SA[1.; 2.; 4.; 5.]
    a[2:3] # Vector
@@ -39,7 +79,7 @@
    @btime SVector($a[2:3]...) # 497.990 ns (7 allocations: 208 bytes)
    
    ```
-7. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
+8. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
    ```
    i = 0 # defined in global
    while i < 5
@@ -57,19 +97,19 @@
       end
    end
    ```
-8. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
+9. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
    * in `REPL` mode
    * heap allocation, for either mutable objects or for creating/growing variable-sized containers (such as Array or Dict, strings, or "type-unstable" objects whose type is only known at runtime).
    * in stack, immutable values like numbers (except bignums), tuples, and immutable structs can be stored much more cheaply
    * [reset elements in a matrix with less memory allocation](https://discourse.julialang.org/t/how-to-reset-the-elements-of-a-3x3-matrix-without-any-memory-allocation/100257/2)
-9. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
+10. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
    * In many languages with optional type declarations, adding declarations is the principal way to make code run faster. This is not the case in Julia. In Julia, the compiler generally knows the types of all function arguments, local variables, and expressions. However, there are a few specific instances where declarations are helpful.
    * [tools](https://docs.julialang.org/en/v1/manual/performance-tips/#tools)
    * type instability, use @code_warntype in `REPL` mode
    * [Cthulhu](https://github.com/JuliaDebug/Cthulhu.jl)
    * A thorough [benckmark.jl](https://github.com/JuliaCI/BenchmarkTools.jl) 
-10. Julia is not object-oriented, [see](https://stackoverflow.com/questions/76674552/what-is-the-julia-equivalent-to-classes-and-instance-variables-in-java)
-11. `vcat(a, b)` is the same as `[a; b]`, but they both create a new array in memory and can be slow. `append!(a, b)` is faster, only modifies existing memory
+11. Julia is not object-oriented, [see](https://stackoverflow.com/questions/76674552/what-is-the-julia-equivalent-to-classes-and-instance-variables-in-java)
+12. `vcat(a, b)` is the same as `[a; b]`, but they both create a new array in memory and can be slow. `append!(a, b)` is faster, only modifies existing memory
     ```
     a = Vector{Vector{Float64}}()
     for i in 1:3
@@ -82,7 +122,7 @@
     println(a)
     println(typeof(a))
     ```
-12. push!() is also fast
+13. push!() is also fast
     ```
     a = Vector{Vector{Float64}}()
     for i in 1:3
@@ -93,7 +133,7 @@
     println(a)
     println(typeof(a))
     ```
-13. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
+14. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
     * @btime (from BenchmarkTools.jl) is designed for accurate benchmarking by running code multiple times, discarding compilation, and reporting the minimum time. 
     * @time is a built-in macro that reports the time and allocations of a single run, including compilation overhead, making it better for a quick check. 
     * Using @benchmark is unbiased, also reports the mean and standard deviation
@@ -102,7 +142,7 @@
       * `@btime b = rand(1000, 1000)`
     * In the terminal `REPL` mode, run:
       * `@benchmark f_function()`
-14. `map(f, array)` applies a function to each value of an array/StaticArray and returns a **new** array/StaticArray containing the resulting values.
+15. `map(f, array)` applies a function to each value of an array/StaticArray and returns a **new** array/StaticArray containing the resulting values.
     * ```
       julia> map(x -> x * 2, [1, 2, 3])
       3-element Vector{Int64}:
@@ -111,7 +151,7 @@
        6
       ```
     * `map!(f, array)` stores the result in the same array.
-15. `mapslices(f, A, dims)` transforms the given dimensions of array A using function f. The dims argument determines which dimensions are sliced (e.g., dims=1 for columns, dims=2 for rows).
+16. `mapslices(f, A, dims)` transforms the given dimensions of array A using function f. The dims argument determines which dimensions are sliced (e.g., dims=1 for columns, dims=2 for rows).
  * sum along the col dimension
    ```
    julia> A = [1 2 3; 4 5 6; 7 8 9];
@@ -142,7 +182,7 @@
     ```
 * mapslices not working on StaticArray, mapslices is designed to be Type-Unstable—it works by slicing up the array into little pieces and then trying to glue them back together at runtime. For similar behaviour of `mapslices(f, a, dims=1)` for StaticArray, you can do Comprehension or Broadcasting on the columns/rows directly
   * results = [f(col) for col in eachcol(a)]
-15. `round(a)`, round a number to integer (round half to even) round a number to integer `round(a, digits=3)` round a number with given digits
+15. `round(a)`, round a number to integer (round half to even) round a number to integer `round(a, digits=3)` round a number with given digits\
  * round(2.5) --> 2
  * round(3.5) --> 4
  * ```
@@ -285,6 +325,7 @@ The only way to break this is by losing Type Stability. This happens if you stor
     * it eliminates the overhead of the function call
     * it may increase the chances of other optimizations
 
+
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
 * Logical cores are the number of physical cores times the number of threads that can run on each core through the use of hyperthreading.
@@ -325,6 +366,22 @@ The only way to break this is by losing Type Stability. This happens if you stor
       -2
     ```
   * we also use anonymous function in getting autodiff jacobian
+* avoid data racing!!
+    ```
+    n_threads = nthreads()
+   
+    results = fill((sol=MVector(0.,0.,0.), solved=false, merit=Inf), 2*n_threads)
+    @threads for i in 1:2*n_threads
+        p_local = deepcopy(p) # avoid data racing!
+        sol, solved, _, merit = run_single_sqp(p_local; verbose)
+        results[i] = (sol, solved, merit)
+        # @printf("solved: %d merit: %.6f \n", solved, merit)
+    end
+    ```
+    * In Julia, NamedTuple `p` is immutable at the top level, but if it contains mutable objects (like a standard Array or a custom mutable struct), those objects are shared across all threads.
+    * If run_single_sqp modifies a shared property like p.P_vic.r, you have a Data Race.
+    * When you run @threads, all threads are looking at the exact same memory address for p. If Thread 1 changes p.P_vic.r while Thread 2 is reading it, Thread 2 will perform its math using Thread 1's data. This leads to non-deterministic results, crashes, or "solved" flags that are mathematically impossible.
+* [SIMD intrinsics](https://kristofferc.github.io/post/intrinsics/)
 
 # Resources
 * [AlphaZero.jl](https://github.com/jonathan-laurent/AlphaZero.jl?tab=readme-ov-file)
