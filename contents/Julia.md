@@ -284,6 +284,7 @@ The only way to break this is by losing Type Stability. This happens if you stor
 24. [inline](https://aviatesk.github.io/posts/inlining-101/)
     * it eliminates the overhead of the function call
     * it may increase the chances of other optimizations
+
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
 * Logical cores are the number of physical cores times the number of threads that can run on each core through the use of hyperthreading.
@@ -324,3 +325,8 @@ The only way to break this is by losing Type Stability. This happens if you stor
       -2
     ```
   * we also use anonymous function in getting autodiff jacobian
+
+# Resources
+* [AlphaZero.jl](https://github.com/jonathan-laurent/AlphaZero.jl?tab=readme-ov-file)
+* [Turing.jl](https://turinglang.org/), Bayesian inference with probabilistic programming, [ecosystem](https://turinglang.org/library/), [Metropolis-Hastings samplers](https://github.com/TuringLang/AdvancedMH.jl)
+* [Finite element](https://ferrite-fem.github.io/Ferrite.jl/stable/), [Tensors.jl](https://ferrite-fem.github.io/Tensors.jl/stable/), [NearestNeighbors.jl](https://github.com/KristofferC/NearestNeighbors.jl)
