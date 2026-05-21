@@ -66,3 +66,7 @@
 18. 3d print
     * transfer stl to gcode, using [printables.com/slice](https://www.printables.com/slice)
     * K1C printer (0.4mm nozzle)
+19. [svg viewer](https://www.svgviewer.dev/)
+20. load svg to draw.io, select `import from current device`
+    * fix the issue of fixed dimension, change `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="450" height="1350" viewBox="0 0 1800 5400">` to `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1800 5400">`. Because Draw.io treats the width and height as hard limits, clips the canvas to those exact pixel dimensions, and leaves the rest of your image hidden outside the viewable box. 
+
