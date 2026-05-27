@@ -324,7 +324,17 @@ The only way to break this is by losing Type Stability. This happens if you stor
 24. [inline](https://aviatesk.github.io/posts/inlining-101/)
     * it eliminates the overhead of the function call
     * it may increase the chances of other optimizations
-
+25. data type in ForwardDiff: x can be `ForwardDiff.Dual`, should use another datatype `T1`.
+    ```
+    function l_3d(p::NamedTuple, x::SVector{6, T1}, λ::SVector{P, T2}) where {P, T1, T2}
+       cons = cons_3d(p, x)
+       return dot(λ, cons)
+    end
+      
+    function l_hessian_3d_fd(p::NamedTuple, x::SVector{6, T}, λ::SVector{P, T}) where {P, T}
+       return FD.hessian(_x->l_3d(p, _x, λ), x)
+    end 
+    ```
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
