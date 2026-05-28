@@ -335,6 +335,7 @@ The only way to break this is by losing Type Stability. This happens if you stor
        return FD.hessian(_x->l_3d(p, _x, λ), x)
     end 
     ```
+26. [ColorPalette](https://docs.juliaplots.org/latest/generated/colorschemes/#ColorPalette), [color names](https://github.com/JuliaGraphics/Colors.jl/blob/master/src/names_data.jl), [color names wiki](https://en.wikipedia.org/wiki/X11_color_names), [ColorSchemes](https://juliagraphics.github.io/ColorSchemes.jl/stable/basics/#:tol_light)
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
@@ -397,3 +398,6 @@ The only way to break this is by losing Type Stability. This happens if you stor
 * [AlphaZero.jl](https://github.com/jonathan-laurent/AlphaZero.jl?tab=readme-ov-file)
 * [Turing.jl](https://turinglang.org/), Bayesian inference with probabilistic programming, [ecosystem](https://turinglang.org/library/), [Metropolis-Hastings samplers](https://github.com/TuringLang/AdvancedMH.jl)
 * [Finite element](https://ferrite-fem.github.io/Ferrite.jl/stable/), [Tensors.jl](https://ferrite-fem.github.io/Tensors.jl/stable/), [NearestNeighbors.jl](https://github.com/KristofferC/NearestNeighbors.jl)
+* [JuliaImages](https://juliaimages.org/latest/tutorials/quickstart/)
+* [Dot product in Julia](https://tianjun.me/programming/Dot_Product_in_Julia/), [Reinforcementlearning.jl](https://juliareinforcementlearning.org/blog/an_introduction_to_reinforcement_learning_jl_design_implementations_thoughts/)
+* [yaoquantum](https://yaoquantum.org/tutorials/getting-started/1-introduction/)
