@@ -1,13 +1,27 @@
 #  Julia
 
-1. Array index starts from 1
-2. Space matters
+1. Create package
+   ```
+   git clone NewPackage.jl
+   cd ../NewPackage.jl
+     pkg> generate NewPackage
+   move files into NewPackage.jl folder
+     pkg> dev .
+     pkg> activate .
+   (NewPackage) pkg> add StaticArrays
+   # check dependency tree
+   pkg> status --manifest
+   # check one dependency
+   pkg> why Clarabel
+   ```
+2. Array index starts from 1
+3. Space matters
    ```
    a = [1, 1, 1] # 3 element vector
    a = [1 1 1+1] # 1, 3 matrix
    a = [1 1 1 +1] # 1, 4 matrix
    ```
-3. Initialization
+4. Initialization
    ```
    a = Int[] is the same as a = Vector{Int}()
    a = Vector{Float64}[] is the same as a = Vector{Vector{Float64}}()
@@ -16,7 +30,7 @@
    @btime SVector(1.1, 1.2, 1.3, 1.4, 1.5) # 0.980 ns (0 allocations: 0 bytes)
    @btime SVector{5}([1.1, 1.2, 1.3, 1.4, 1.5]) # 8.710 ns (1 allocation: 64 bytes)
    ```
-4. Standard Assignment `=` does not make a copy of the array a, it simply binds the name b to the same array a
+5. Standard Assignment `=` does not make a copy of the array a, it simply binds the name b to the same array a
    ```
    # Standard assignment
    b = [1, 2, 3]
@@ -56,14 +70,14 @@
      end
      ```
      such a function would typically be named f!(x, y) rather than f(x, y)
-5. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
-6. `...` is the splat operator
+6. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
+7. `...` is the splat operator
    ```
    a = [[1, 1], [1, 2], [1, 4]] # 3 element vector
    vcat(a...) # 6 element vector
    @btime vcat($a...) # 40.232 ns (2 allocations: 112 bytes)
    ```
-7. slicing
+8. slicing
    ```
    a = SA[1.; 2.; 4.; 5.]
    a[2:3] # Vector
@@ -79,7 +93,7 @@
    @btime SVector($a[2:3]...) # 497.990 ns (7 allocations: 208 bytes)
    
    ```
-8. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
+9. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
    ```
    i = 0 # defined in global
    while i < 5
@@ -97,12 +111,12 @@
       end
    end
    ```
-9. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
+10. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
    * in `REPL` mode
    * heap allocation, for either mutable objects or for creating/growing variable-sized containers (such as Array or Dict, strings, or "type-unstable" objects whose type is only known at runtime).
    * in stack, immutable values like numbers (except bignums), tuples, and immutable structs can be stored much more cheaply
    * [reset elements in a matrix with less memory allocation](https://discourse.julialang.org/t/how-to-reset-the-elements-of-a-3x3-matrix-without-any-memory-allocation/100257/2)
-10. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
+11. [Type inference](https://docs.julialang.org/en/v1/manual/performance-tips/#Type-inference)
    * In many languages with optional type declarations, adding declarations is the principal way to make code run faster. This is not the case in Julia. In Julia, the compiler generally knows the types of all function arguments, local variables, and expressions. However, there are a few specific instances where declarations are helpful.
    * [tools](https://docs.julialang.org/en/v1/manual/performance-tips/#tools)
    * type instability, use @code_warntype in `REPL` mode
