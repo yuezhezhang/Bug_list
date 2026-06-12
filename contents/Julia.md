@@ -70,6 +70,15 @@
      end
      ```
      such a function would typically be named f!(x, y) rather than f(x, y)
+     ```
+     function test_mutation!(a::Vector{T}, b::SVector{3, T}, c::Vector{T}, d::Vector{T}) where {T}
+        empty!(a)          # memory not changed
+        push!(a, rand())   # mutation
+        b = SA[0.; 1.; 2.] # no mutation
+        c = [1.; 2.; 3.]   # no mutation
+        d .+= 1.0          # mutation
+     end
+     ```
 6. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
 7. `...` is the splat operator
    ```
@@ -135,6 +144,13 @@
     end
     println(a)
     println(typeof(a))
+
+    # don't do, 25.506 μs
+    a = rand(SMatrix{1, 3})
+    for i in 1:100
+        b = rand(SMatrix{1, 3})
+        a = vcat(a, b)
+    end
     ```
 13. push!() is also fast
     ```
@@ -146,6 +162,13 @@
     end
     println(a)
     println(typeof(a))
+
+    # do, 936.138 ns
+    a = SVector{3, Float64}[]
+    for i in 1:100
+        b = rand(SVector{3})
+        push!(a, b)
+    end
     ```
 14. test time, [see](https://discourse.julialang.org/t/time-vs-btime/9879/5)
     * @btime (from BenchmarkTools.jl) is designed for accurate benchmarking by running code multiple times, discarding compilation, and reporting the minimum time. 
