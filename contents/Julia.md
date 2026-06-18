@@ -9,10 +9,21 @@
      pkg> dev .
      pkg> activate .
    (NewPackage) pkg> add StaticArrays
+   # check installed packages
+   pkg> status
    # check dependency tree
    pkg> status --manifest
    # check one dependency
    pkg> why Clarabel
+
+   # fix misalignment between Project.toml and Manifest.toml
+   pkg> resolve
+
+   # download packages
+   pkg> instantiate
+
+   # activates the local env with nthreads 2 
+   julia --project=. -t2 
    ```
 2. Array index starts from 1
 3. Space matters
@@ -373,6 +384,10 @@ The only way to break this is by losing Type Stability. This happens if you stor
     end 
     ```
 26. [ColorPalette](https://docs.juliaplots.org/latest/generated/colorschemes/#ColorPalette), [color names](https://github.com/JuliaGraphics/Colors.jl/blob/master/src/names_data.jl), [color names wiki](https://en.wikipedia.org/wiki/X11_color_names), [ColorSchemes](https://juliagraphics.github.io/ColorSchemes.jl/stable/basics/#:tol_light)
+27. [Juliaup configuration is locked by another process, waiting for it to unlock](https://github.com/JuliaLang/juliaup/issues/435)
+    ```
+    rm ~/.julia/juliaup/.juliaup-lock
+    ```
 
 # Parallelization
 * Physical core: number of physical cores, actual hardware components.
