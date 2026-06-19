@@ -41,6 +41,50 @@
    @btime SVector(1.1, 1.2, 1.3, 1.4, 1.5) # 0.980 ns (0 allocations: 0 bytes)
    @btime SVector{5}([1.1, 1.2, 1.3, 1.4, 1.5]) # 8.710 ns (1 allocation: 64 bytes)
    ```
+5. row slicing is more efficient than column slicing, `rand(T)` is more efficient than `rand(SVector{3, T})`
+   ```
+   @inline function get_random(bounds::SVector{2, T}) where {T}
+       lb, ub = bounds
+       return lb + (ub - lb) * rand(T)
+   end
+   
+   @inline function get_random1(bounds::SMatrix{M, 2, T}) where {M, T}
+       lb, ub = bounds[:, 1], bounds[:, 2]
+       return lb + (ub - lb) .* rand(M)
+   end
+   
+   # julia> @benchmark get_random1($bounds)
+   #  Range (min … max):  12.683 ns …  3.121 μs  ┊ GC (min … max):  0.00% … 99.19%
+   #  Memory estimate: 80 bytes, allocs estimate: 2.
+   
+   @inline function get_random2(bounds::SMatrix{M, 2, T}) where {M, T}
+       lb, ub = bounds[:, 1], bounds[:, 2]
+       return lb + (ub - lb) .* rand(SVector{M, T})
+   end
+   
+   # julia> @benchmark get_random2($bounds)
+   #  Range (min … max):  8.047 ns … 21.971 ns  ┊ GC (min … max): 0.00% … 0.00%
+   #  Memory estimate: 0 bytes, allocs estimate: 0.
+   
+   @inline function get_random3(bounds::SMatrix{M, 2, T}) where {M, T}
+       lb, ub = bounds[SOneTo(M), 1], bounds[SOneTo(M), 2]
+       return lb + (ub - lb) .* rand(SVector{M, T})
+   end
+   
+   # julia> @benchmark get_random3($bounds)
+   #  Range (min … max):  8.047 ns … 26.476 ns  ┊ GC (min … max): 0.00% … 0.00%
+   #  Memory estimate: 0 bytes, allocs estimate: 0.
+   
+   function test_random(bounds::SMatrix{M, 2, T}) where {M, T}
+       x = get_random(bounds[1, :])
+       y = get_random(bounds[2, :])
+       θ = get_random(bounds[3, :])
+   end
+   
+   # julia> @benchmark test_random($bounds)
+   #  Range (min … max):  3.269 ns … 17.420 ns  ┊ GC (min … max): 0.00% … 0.00%
+   #  Memory estimate: 0 bytes, allocs estimate: 0.
+   ```
 5. Standard Assignment `=` does not make a copy of the array a, it simply binds the name b to the same array a
    ```
    # Standard assignment
