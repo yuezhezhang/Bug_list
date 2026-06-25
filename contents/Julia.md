@@ -15,6 +15,10 @@
    pkg> status --manifest
    # check one dependency
    pkg> why Clarabel
+   # check outdated packages
+   pkg> status --outdated
+   # remove package
+   pkg> rm PACKAGENAME 
 
    # fix misalignment between Project.toml and Manifest.toml
    pkg> resolve
