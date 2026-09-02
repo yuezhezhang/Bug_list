@@ -4,13 +4,31 @@
    ```
    git clone NewPackage.jl
    cd ../NewPackage.jl
+   
      pkg> generate NewPackage
    move files into NewPackage.jl folder
      pkg> dev .
      pkg> activate .
    (NewPackage) pkg> add StaticArrays
+
+   # Or
+   (@v1.12) pkg> activate .
+   (PackageName) pkg> instantiate
+
+   # Or
+   julia> using Pkg
+   julia> Pkg.activate(".")
+   # Optional julia> Pkg.develop(".")
+   # Optional julia> Pkg.develop("..")
+   julia> Pkg.instantiate()
+
    # check installed packages
    pkg> status
+
+   # Or
+   julia> using Pkg
+   julia> Pkg.installed()
+   
    # check dependency tree
    pkg> status --manifest
    # check one dependency
@@ -18,7 +36,9 @@
    # check outdated packages
    pkg> status --outdated
    # remove package
-   pkg> rm PACKAGENAME 
+   pkg> rm PACKAGENAME
+
+
 
    # fix misalignment between Project.toml and Manifest.toml
    pkg> resolve
