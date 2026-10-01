@@ -55,6 +55,15 @@
    a = [1, 1, 1] # 3 element vector
    a = [1 1 1+1] # 1, 3 matrix
    a = [1 1 1 +1] # 1, 4 matrix
+
+   # carefull!!
+   a = 1 
+      + 2
+   println(a) # 1
+
+   a = 1 + 
+      2
+   println(a) # 3
    ```
 4. Initialization
    ```
