@@ -168,13 +168,25 @@
      end
      ```
 6. [Julia package setup](https://bjack205.github.io/tutorial/2021/07/16/julia_package_setup.html)
-7. `...` is the splat operator
+7. * after an iterable `...` is the splat operator that unpacks a collection into individual components
    ```
    a = [[1, 1], [1, 2], [1, 4]] # 3 element vector
    vcat(a...) # 6 element vector
    @btime vcat($a...) # 40.232 ns (2 allocations: 112 bytes)
    ```
-8. slicing
+   * In the argument, `...` is the slurp operator that gathers multiple values into a single collection
+   ```
+   function greet(prefix, names...)
+       for name in names
+           println("$prefix, $name!")
+       end
+   end
+   
+   greet("Hello", "Ada", "Linus")
+   # Hello, Ada!
+   # Hello, Linus!
+   ```
+9. slicing
    ```
    a = SA[1.; 2.; 4.; 5.]
    a[2:3] # Vector
@@ -190,7 +202,7 @@
    @btime SVector($a[2:3]...) # 497.990 ns (7 allocations: 208 bytes)
    
    ```
-9. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
+10. [Variable Scoping](https://docs.julialang.org/en/v1/manual/variables-and-scoping/)
    ```
    i = 0 # defined in global
    while i < 5
@@ -208,7 +220,7 @@
       end
    end
    ```
-10. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
+11. [Measure performance with @time and pay attention to memory allocation](https://docs.julialang.org/en/v1/manual/performance-tips/#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation)
    * in `REPL` mode
    * heap allocation, for either mutable objects or for creating/growing variable-sized containers (such as Array or Dict, strings, or "type-unstable" objects whose type is only known at runtime).
    * in stack, immutable values like numbers (except bignums), tuples, and immutable structs can be stored much more cheaply
